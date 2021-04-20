@@ -1,18 +1,21 @@
 require("dotenv").config({path: "path/to/.env"});
-const uri = process.env.MONGOURL;
-const MongoClient = require("mongodb").MongoClient;
-const mongo = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
 let bname = "Beyblade"
 
-mongo.connect(err => {
-  console.log("MongoDB connected for Beyblade.js");
-});
+const MongoClient = require('mongodb').MongoClient;
+const uri = process.env.MONGOURL;
 
-const ids = mongo.db("main").collection("ids")
-const id = ids.find({});
+//NOT WORKING
+const mongo = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongo.connect(err => {
+    console.log("Connected to MongoDB server...");
+	const ids = mongo.db("main").collection("ids") // substitute your database and collection names
+	ids.find({}).toArray(function(err, result) {
+        console.log("find query executed...")    
+        console.log(result)
+	});
+});
+//ABOVE NOT WORKING
+
 const datas = {};
 Promise.all([id]).then(data => {
   let beys = data[0];
