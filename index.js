@@ -30,12 +30,12 @@ for (const file of commandFiles) {
 }
 
 //Beys
-const beyFiles = fs.readdirSync('./beys').filter(file => file.endsWith(".js") && file !== ".gitignore");
+/*const beyFiles = fs.readdirSync('./beys').filter(file => file.endsWith(".js") && file !== ".gitignore");
 for (const file of beyFiles) {
     const bey = require(`./beys/${file}`);
     const beyc = new bey("1","1");
     client.beys.set(beyc.name, bey);
-}
+}*/
 
 
 //Items
