@@ -5,6 +5,10 @@ const fs = require('fs');
 const prefix = ";";
 require('dotenv').config();
 
+//RNG
+const testForNumber = Math.floor(Math.random() * 30);
+if(testForNumber == 0) runFile();
+
 //Eris CLient
 const client = new Eris(process.env.TOKEN);
 client.commands = new (Discord.Collection || Map)();
@@ -30,12 +34,12 @@ for (const file of commandFiles) {
 }
 
 //Beys
-/*const beyFiles = fs.readdirSync('./beys').filter(file => file.endsWith(".js") && file !== ".gitignore");
+const beyFiles = fs.readdirSync('./beys').filter(file => file.endsWith(".js") && file !== ".gitignore");
 for (const file of beyFiles) {
     const bey = require(`./beys/${file}`);
     const beyc = new bey("1","1");
     client.beys.set(beyc.name, bey);
-}*/
+}
 
 
 //Items
