@@ -611,3 +611,6 @@ module.exports.run = async (client, message, args, player, prefix, opponent1, op
     let logger = new Logger();
     countdown(message, opponent1, opponent2, player, prefix, client, msg, logger);
   }
+  module.exports.help = {
+    name: "battlesystem"
+     }  

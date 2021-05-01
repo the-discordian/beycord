@@ -61,7 +61,7 @@ module.exports.run = async (client, message, args, prefix, ok, db) => {
       if(inv[i].broken && inv[i].broken === true) iinfo += "<a:alert:724198069226438686> | ";
       if(inv[i].starred && inv[i].starred === true) iinfo += "⭐ | ";
       if(inv[i].level === 0) iinfo += "<:level0:722078650190528583> | ";
-      if(client.blackbeys.includes(inv[i].name) || inv[i].name === "Black Perfect Phoenix" || inv[i].name === "Dark Perfect Phoenix") iinfo += "<:black:721678218859511829> | ";
+//      if(client.blackbeys.includes(inv[i].name) || inv[i].name === "Black Perfect Phoenix" || inv[i].name === "Dark Perfect Phoenix") iinfo += "<:black:721678218859511829> | ";
       let type = "<:Balance:760560740750458901>";
       switch(inv[i].type){
         case "Attack":

@@ -1,5 +1,21 @@
-const Discord = require("discord.js");
-//const Fuse = require("fuse.js");
+const Discord = require('discord.js');
+
+module.exports.run = async (client, message, args, prefix, player, db) => {
+  let startembed = new Discord.MessageEmbed()
+  .setTitle('Beypedia')
+  .setDescription("This command is temporarily turned off due to maintenance. Try again soon? \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
+  .setColor("#7f7fff")
+  .setTimestamp();
+  message.channel.createMessage({embed:startembed});
+}
+
+module.exports.help = {
+  name: "beypedia",
+  desc: "beypedia",
+}
+
+/*const Discord = require("discord.js");
+const Fuse = require("fuse.js");
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let stats = await db.collection("users").findOne({_id: message.author.id});
@@ -133,12 +149,12 @@ bey.special(facted, fvictim, fakemsg, player)
       stamina = stamina + 1;
     }
     let rarity;
-    if(client.commonbeys.includes(bey.name)) rarity = "Common";
-    else if(client.rarebeys.includes(bey.name)) rarity = "Rare";
-    else if(client.legendarybeys.includes(bey.name)) rarity = "Legendary";
-    else if(client.availablebeys.includes(bey.name)) rarity = "Unknown";
-    else if(client.blackbeys.includes(bey.name)) rarity = "Black";
-    else rarity = "Exclusive";
+//    if(client.commonbeys.includes(bey.name)) rarity = "Common";
+//     if(client.rarebeys.includes(bey.name)) rarity = "Rare";
+//    else if(client.legendarybeys.includes(bey.name)) rarity = "Legendary";
+//    else if(client.availablebeys.includes(bey.name)) rarity = "Unknown";
+//    else if(client.blackbeys.includes(bey.name)) rarity = "Black";
+//    else rarity = "Exclusive";
     let embed = new Discord.MessageEmbed()
     .setTitle(`${bey.name}'s Base Information`)
     .addField("Type", bey.type)
@@ -302,4 +318,4 @@ module.exports.help = {
   aliases: ["pedia","beydex","dex"],
   desc: "Flip the legendary Beypedia and get information about Beys.",
   usage: "beypedia - Show the first page of Beypedia.\nbeypedia <page number> - Show a page of Beypedia.\nbeypedia <bey name> - Check a Bey's base information."
-}
+}*/

@@ -1,6 +1,22 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
+
+module.exports.run = async (client, message, args, prefix, player, db) => {
+  let startembed = new Discord.MessageEmbed()
+  .setTitle('Whitemarket')
+  .setDescription("This command is temporarily turned off due to maintenance. Try again soon? \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
+  .setColor("#7f7fff")
+  .setTimestamp();
+  message.channel.createMessage({embed:startembed});
+}
+
+module.exports.help = {
+  name: "whitemarket",
+  desc: "whitemarket",
+}
+
+/*const Discord = require("discord.js");
 const ReactionHandler = require("eris-reactions");
-//const Fuse = require("fuse.js");
+const Fuse = require("fuse.js");
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let stats = await db.collection("users").findOne({ _id: message.author.id });
@@ -72,7 +88,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       if(end-start>50) return message.channel.createMessage(`The current ping (${end-start}ms) is too high for the listing to process. Please try again later.`)
       sbey = stats.beys[parseInt(args[1]) - 1];
       if (!sbey) return message.reply("no Bey found to put on the White Market.");
-      let minfo = await db.collection("market").findOne({ _id: "info" });
+      let minfo = await db.collection("market").findOne({ _id: "info"});
       let mid = parseInt(minfo.latestid) + 1;
       if (typeof mid !== "string") mid = mid.toString();
       stats.beys[sindex].starred = false;
@@ -83,7 +99,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
         price: price
       });
       db.collection("market").updateOne(
-        { _id: "info" },
+        { _id: "info", latestid: 0 },
         { $set: { latestid: mid } }
       );
       stats.beys.splice(sindex, 1);
@@ -137,7 +153,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     let page = parseInt(args[1] || 1);
     if(isNaN(page) || page < 1) return msg.edit("What is this?");
     let allitems = await db.collection("market").countDocuments({});
-    let recent = await db.collection("market").findOne({_id: "info"});
+    let recent = await db.collection("market").findOne({ _id: "info", latestid: 0 });
     let id = recent.latestid;
     let maxpages = Math.ceil((parseInt(allitems) - 1) / 25);
     if (page === 1) {
@@ -391,3 +407,4 @@ module.exports.help = {
   desc: "Sell or buy Beys from the White Market.",
   usage: "whitemarket - Show the first page of the White Market.\nwhitemarket view/page <page number> - View a page of the White Market.\nwhitemarket sell <bey index number> <price> - Sell a Bey on the White Market.\nwhitemarket info <ID> - View the information of a Bey displayed on the White Market.\nwhitemarket search <Bey name>|<page number (optional)>|<price order (optional)>|<level order (optional)> - Search for a Bey in the White Market.\nwhitemarket buy <ID> - Buy a Bey from the White Market.\n\nThe IDs are the (#12345678) thing with \"(#)\" removed. Basically the numbers.\n\n**Price Orders:**\na OR ascending\nd OR descending\nr OR random\n\n**Level orders are the same as price orders.**"
 };
+*/

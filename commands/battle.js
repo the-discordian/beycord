@@ -1,4 +1,20 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
+
+module.exports.run = async (client, message, args, prefix, player, db) => {
+  let startembed = new Discord.MessageEmbed()
+  .setTitle('Battle')
+  .setDescription("This command is temporarily turned off due to maintenance. Try again soon? \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
+  .setColor("#7f7fff")
+  .setTimestamp();
+  message.channel.createMessage({embed:startembed});
+}
+
+module.exports.help = {
+  name: "battle",
+  desc: "battle",
+}
+
+/*const Discord = require("discord.js");
 const ReactionHandler = require("eris-reactions");
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
@@ -77,7 +93,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   .setColor("#ffcf00");
   req.edit({content:`<@${challenged.id}>, <@${message.author.id}>, please approve the battle request below.`, embed: request3});
   if (agreed1 == true && agreed2 == true) {
-    let bs = require("../utils/battlesystem.js");
+    let bs = require("./battlesystem.js");
     client.createMessage(message.channel.id, "Waiting for battle...").then(msg => {
       if(stats2.states.inBattle == true) return message.channel.createMessage(`<@${challenged.user.id}>, you are already in a battle. Please end that one before doing another one.`)
       db.collection("users").updateOne({_id: message.author.id}, {$set: {"states.inBattle": true}});
@@ -106,3 +122,4 @@ module.exports.help = {
   name: "battle",
   aliases: ["duel", "b"]
 };
+*/

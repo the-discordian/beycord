@@ -13,15 +13,15 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     if(user.balance <= 0) return message.reply("you don't have any pending Valtz to claim.");
     db.collection("cny").updateOne({_id: message.author.id}, {$set: {balance: 0}});
     db.collection("users").updateOne({_id: message.author.id}, {$set: {coins: coins.coins + user.balance}});
-    return message.channel.createMessage(`You claimed <:valtz:665760587845861386>${user.balance}. Thanks for being part of 2021's LNY event!`);
+    return message.channel.createMessage(`You claimed <:valtz:834572655616196658> ${user.balance}. Thanks for being part of 2021's LNY event!`);
   }
   let embed = new Discord.MessageEmbed()
   .setAuthor(message.author.tag, message.author.avatarURL)
   .setTitle("Your balance")
   .setThumbnail("https://cdn.discordapp.com/attachments/496658978638397450/746868144491987014/beycordbag.png")
-  .setDescription(`<:valtz:665760587845861386>${coins.coins}\n⭐${coins.stars}`)
+  .setDescription(`<:valtz:834572655616196658> ${coins.coins}\n⭐ ${coins.stars}`)
   .setColor("#50c878");
-  embed.addField("Pending", `<:valtz:665760587845861386>${user.balance}`)
+  embed.addField("Pending", `<:valtz:834572655616196658> ${user.balance}`)
   client.createMessage(message.channel.id, {embed:embed});
 }
 

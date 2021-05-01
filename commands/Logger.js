@@ -35,3 +35,6 @@ class Logger extends EventEmitter {
 }
 
 module.exports = Logger;
+module.exports.help = {
+    name: "logger"
+     }  

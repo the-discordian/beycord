@@ -1,4 +1,20 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
+
+module.exports.run = async (client, message, args, prefix, player, db) => {
+  let startembed = new Discord.MessageEmbed()
+  .setTitle('ApproveBB')
+  .setDescription("Dude what Buddy Bey are you trying to approve 😅 Like we don't even have the Buddy Bey system set up and you're not even authorized to use the command lol. \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
+  .setColor("#7f7fff")
+  .setTimestamp();
+  message.channel.createMessage({embed:startembed});
+}
+
+module.exports.help = {
+  name: "approvebb",
+  desc: "approvebb",
+}
+
+/*const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
   if(message.channel.id !== "APPROVAL CHANNEL") return;
@@ -28,3 +44,4 @@ module.exports.help = {
   desc: "Approve a Buddy Bey. AUTHORIZED ACCESS ONLY",
   usage: "approvebb <ID> <message> - Approve a Buddy Bey according to the ID."
 }
+*/

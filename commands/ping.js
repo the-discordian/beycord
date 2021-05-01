@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-
 module.exports.run = async (client, message, args, prefix, player, db, cmdt) => {
   let now = new Date();
   client.createMessage(message.channel.id, ':ping_pong: **PONG!**')
@@ -8,6 +7,7 @@ module.exports.run = async (client, message, args, prefix, player, db, cmdt) => 
     let stats = await db.collection("users").findOne({_id: message.author.id});
     let newnow = new Date();
     let dbping = newnow - dbnow;
+    let cmdt = new Date();
     let pembed = new Discord.MessageEmbed()
     .setTitle("Pings")
     .setColor("#7f7fff")

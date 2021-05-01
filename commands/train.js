@@ -1,4 +1,20 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
+
+module.exports.run = async (client, message, args, prefix, player, db) => {
+  let startembed = new Discord.MessageEmbed()
+  .setTitle('Train')
+  .setDescription("This command is temporarily turned off due to maintenance. Try again soon? \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
+  .setColor("#7f7fff")
+  .setTimestamp();
+  message.channel.createMessage({embed:startembed});
+}
+
+module.exports.help = {
+  name: "train",
+  desc: "train",
+}
+
+/*const Discord = require("discord.js");
 const last = [];
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
@@ -20,7 +36,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   .setColor("#50c878");
   last[message.author.id] = now;
   if(questchance < 36 && stats.qslots > stats.quests.length){
-    let quest = client.quests.random();
+    let quest = client.quests.Math.random();
     let newquest = new quest();
     if(!newquest.name.includes("Halloween") && !newquest.name.includes("JoJo")){
     stats.quests.push(newquest);
@@ -34,4 +50,4 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 module.exports.help = {
   name: "train",
   aliases: ["t"]
-}
+}*/

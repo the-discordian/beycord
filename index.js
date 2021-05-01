@@ -6,11 +6,11 @@ const prefix = ";";
 require('dotenv').config();
 
 //RNG
-const testForNumber = Math.floor(Math.random() * 30);
-if(testForNumber == 0) runFile();
+/*const testForNumber = Math.floor(Math.random() * 30);
+if(testForNumber == 0) runFile();*/
 
 //Eris CLient
-const client = new Eris(process.env.TOKEN);
+const client = new Eris(process.env.TOKEN, {restMode:true});
 client.commands = new (Discord.Collection || Map)();
 client.beys = new (Discord.Collection || Map)();
 client.parts = new (Discord.Collection || Map)();

@@ -1,4 +1,20 @@
-const forsale = ["Buddy Bey Kit", "x1.5 EXP Booster 1 Hour", "Toolbox", "Perfect Constructor", "3 Premium Tickets Chest", "10 Premium Tickets Chest", "35 Premium Tickets Chest", "Void Meat", "Gift Box", "Avatar Embryo", "BeyLauncher LR"];
+const Discord = require('discord.js');
+
+module.exports.run = async (client, message, args, prefix, player, db) => {
+  let startembed = new Discord.MessageEmbed()
+  .setTitle('Purchase')
+  .setDescription("This command is temporarily turned off due to maintenance. Try again soon? \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
+  .setColor("#7f7fff")
+  .setTimestamp();
+  message.channel.createMessage({embed:startembed});
+}
+
+module.exports.help = {
+  name: "purchase",
+  desc: "purchase",
+}
+
+/*const forsale = ["Buddy Bey Kit", "x1.5 EXP Booster 1 Hour", "Toolbox", "Perfect Constructor", "3 Premium Tickets Chest", "10 Premium Tickets Chest", "35 Premium Tickets Chest", "Void Meat", "Gift Box", "Avatar Embryo", "BeyLauncher LR"];
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let stats = await db.collection("users").findOne({_id: message.author.id});
   if(!stats) return message.reply(`it looks like you haven't started the game yet. Type \`\`${prefix}start\`\` to begin.`);
@@ -24,4 +40,4 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 module.exports.help = {
   name: "purchase",
   aliases: ["prchs", "p", "buy"]
-}
+}*/
