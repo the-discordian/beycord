@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+
 module.exports.run = async (client, message, args, prefix, player, db, cmdt) => {
   let now = new Date();
   client.createMessage(message.channel.id, ':ping_pong: **PONG!**')
