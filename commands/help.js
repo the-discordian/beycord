@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     { name: 'info', value: 'See information about a specific bey.' },
     { name: 'inventory', value: `Show someone's inventory.` },
     { name: 'iteminventory', value: 'View your inventory of items' },
-    { name: 'knownbugs', balue: 'Displays all known bugs.'},
+    { name: 'knownbugs', value: 'Displays all known bugs.'},
     { name: 'launcher', value: 'Equip, unequip and view your launchers' },
     { name: 'part', value: `Check for a Bey part's information.` },
     { name: 'partinventory', value: 'View what Bey parts you have in your inventory.' },
