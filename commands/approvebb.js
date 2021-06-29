@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let startembed = new Discord.MessageEmbed()
   .setTitle('ApproveBB')
-  .setDescription("Dude what Buddy Bey are you trying to approve 😅 Like we don't even have the Buddy Bey system set up and you're not even authorized to use the command lol. \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
+  .setDescription("You are not authorized to use this command. \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
   .setColor("#7f7fff")
   .setTimestamp();
   message.channel.createMessage({embed:startembed});

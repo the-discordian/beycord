@@ -1,13 +1,14 @@
-//Assigning Variables / Requiring
+//RNG
+const testForNumber = Math.floor(Math.random() * 30);
+if(testForNumber == 0) runFile();
+
+//Required
 const Discord = require('discord.js');
 const Eris = require("eris-additions")(require("eris"));
 const fs = require('fs');
 const prefix = ";";
 require('dotenv').config();
-
-//RNG
-/*const testForNumber = Math.floor(Math.random() * 30);
-if(testForNumber == 0) runFile();*/
+ 
 
 //Eris CLient
 const client = new Eris(process.env.TOKEN, {restMode:true});
@@ -43,7 +44,7 @@ for (const file of beyFiles) {
 
 
 //Items
-const itemFiles = fs.readdirSync('./items').filter(file => file.endsWith(".js") && file !== "Booster.js" && file !== "Part.js" && file !== "Beyblade.js" && file !== "Quest.js");
+const itemFiles = fs.readdirSync('./items').filter(file => file.endsWith(".js") && file !== "Part.js" && file !== "Beyblade.js" && file !== "Quest.js");
 for (const file of itemFiles) {
     const item = require(`./items/${file}`);
     client.items.set(item.name || item.help.name, item);
@@ -67,7 +68,7 @@ client.on('messageCreate', async (message) => {
             cmd.run(client, message, args, prefix, {}, db);
         } catch (error) {
             console.error(error);
-            message.reply(`something happened while trying to run this command. Maybe Corrupt is just an idiot?`);
+            message.reply(`something happened while trying to run this command. Maybe the developer is just an idiot?`);
         }
     }
 });
@@ -75,6 +76,6 @@ client.on('messageCreate', async (message) => {
 //Connect client
 client.on('ready', () => {
     console.log('Beycord is online!');
+    client.editStatus({name: ";help - beycord.xyz"});
 });
-
 client.connect();

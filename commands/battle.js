@@ -1,20 +1,4 @@
-const Discord = require('discord.js');
-
-module.exports.run = async (client, message, args, prefix, player, db) => {
-  let startembed = new Discord.MessageEmbed()
-  .setTitle('Battle')
-  .setDescription("This command is temporarily turned off due to maintenance. Try again soon? \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
-  .setColor("#7f7fff")
-  .setTimestamp();
-  message.channel.createMessage({embed:startembed});
-}
-
-module.exports.help = {
-  name: "battle",
-  desc: "battle",
-}
-
-/*const Discord = require("discord.js");
+const Discord = require("discord.js");
 const ReactionHandler = require("eris-reactions");
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
@@ -122,4 +106,3 @@ module.exports.help = {
   name: "battle",
   aliases: ["duel", "b"]
 };
-*/

@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+/*const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let startembed = new Discord.MessageEmbed()
@@ -12,9 +12,9 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 module.exports.help = {
   name: "train",
   desc: "train",
-}
+}*/
 
-/*const Discord = require("discord.js");
+const Discord = require("discord.js");
 const last = [];
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
@@ -50,4 +50,4 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 module.exports.help = {
   name: "train",
   aliases: ["t"]
-}*/
+}

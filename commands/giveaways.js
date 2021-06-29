@@ -1,22 +1,6 @@
-const Discord = require('discord.js');
-
-module.exports.run = async (client, message, args, prefix, player, db) => {
-  let startembed = new Discord.MessageEmbed()
-  .setTitle('Giveaways')
-  .setDescription("This command is temporarily turned off due to maintenance. Try again soon? \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
-  .setColor("#7f7fff")
-  .setTimestamp();
-  message.channel.createMessage({embed:startembed});
-}
-
-module.exports.help = {
-  name: "giveaways",
-  desc: "Giveaways",
-}
-
-/*const Discord = require("discord.js");
+const Discord = require("discord.js");
 const ReactionHandler = require("eris-reactions");
-//const Fuse = require("fuse.js");
+const Fuse = require("fuse.js");
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
@@ -64,7 +48,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     });
     if(reactions[0]){
     if (reactions[0].emoji.name === "✅") {
-      let minfo = await db.collection("giveaways").findOne({ _id: "info", latestid: 0 }      );
+      let minfo = await db.collection("giveaways").findOne({ _id: "info" });
       let mid = parseInt(minfo.latestid) + 1;
       if (typeof mid !== "string") mid = mid.toString();
       stats.beys[sindex].starred = false;
@@ -77,7 +61,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
         startTime: new Date()
       });
       db.collection("giveaways").updateOne(
-        { _id: "info", latestid: 0 },
+        { _id: "info" },
         { $set: { latestid: mid } }
       );
       stats.beys.splice(sindex, 1);
@@ -125,7 +109,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     let page = parseInt(args[1] || 1);
     if(isNaN(page) || page < 1) return msg.edit("What is this?");
     let allitems = await db.collection("giveaways").countDocuments({});
-    let recent = await db.collection("giveaways").findOne({ _id: "info", latestid: 0 }    );
+    let recent = await db.collection("giveaways").findOne({_id: "info"});
     let id = recent.latestid;
     let maxpages = Math.ceil((parseInt(allitems) - 1) / 25);
     if (page === 1) {
@@ -330,4 +314,4 @@ module.exports.help = {
   aliases: ["ga", "giveaway"],
   desc: "Host, enter and view giveaways!",
   usage: "giveaways - Shows the first page of the giveaway list.\ngiveaways list <bey index> - List a Bey to giveaway.\ngiveaways enter <giveaway id> <normal ticket amount> <premium ticket amount (optional)> - Enter a giveaway using Giveaway Tickets stored in your pocket.\ngiveaways end <giveaway id> - End a giveaway and earn EXPs. You must be the host of the giveaway and the giveaway must have at least 5 entries.\ngiveaways view/page <page number> - View a page of the giveaway list.\ngiveaways search/find <name|<page number (optional)>|<entries order (optional)>|<level order (optional)> - Search for a giveaway of a specific Bey or item.\ngiveaways info - View the information of an existing giveaway.\n\n__Entries and Level Orders__\nd OR descending\na OR ascending\nr OR random\n\nIDs are the numbers in something like (#123293)."
-};*/
+};

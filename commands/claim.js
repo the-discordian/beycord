@@ -1,9 +1,9 @@
-const Discord = require('discord.js');
+/*const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let startembed = new Discord.MessageEmbed()
   .setTitle('Claim')
-  .setDescription("There's nothing to claim, you silly goose. Due to mantainance, the RNG system is currently disabled. \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
+  .setDescription("There's nothing to claim, you silly goose. Due to mantainence, the RNG system is currently disabled. \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
   .setColor("#7f7fff")
   .setTimestamp();
   message.channel.createMessage({embed:startembed});
@@ -12,9 +12,9 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 module.exports.help = {
   name: "claim",
   desc: "claim",
-}
+}*/
 
-/*const Discord = require("discord.js");
+const Discord = require("discord.js");
 const fs = require("fs");
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
@@ -60,4 +60,4 @@ module.exports.help = {
   aliases: ["get"],
   desc: "Claim the most recent spawned Bey.",
   usage: "You should see something that looks like this in the spawn embed.\n```1 + 1```\nThat's the Math question applied to that spawn. It will always be a simple sum question.\n\nYou should also know all the types of Beys that exist:\n1) Attack\n2) Defense / Defence\n3) Stamina\n4) Balance\n\nSlam that Math and type knowledge together along with the `claim` command and you will be able to claim a Bey without a sweat! Here's an example:\n\n`;claim 11 attack`\n\nHope you are able to understand it!"
-}*/
+}

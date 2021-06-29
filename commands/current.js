@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     .addField("Moves", moves || "???")
     .setAuthor(`${stats.main+1}/${stats.beys.length}`, message.author.avatarURL)
     .setFooter(`${difference} more EXPs required to reach Lvl${crntbey.level + 1}.`);
-    if(difference <= 0) embed.setFooter("Levelling up at next message");
+    if(difference <= 0) embed.setFooter("Leveling up at next message");
     if(crntbey.level >= ((crntbey.gen || 1)*20)) embed.setFooter("Awaiting upgrade")
   if(crntbey.level === 100) embed.setFooter("Level MAX");
   let generation = crntbey.gen || 1;

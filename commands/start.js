@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   const filter = m => m.author.id === message.author.id;
   let collected = await message.channel.awaitMessages(filter, {maxMatches: 1, time: 300000})
   .catch(err => console.error(err));
-    if(collected[0].content.toLowerCase() !== "victory valkyrie" && collected[0].content.toLowerCase() !== "rising ragnaruk" && collected[0].content.toLowerCase() !== "king kerbeus" && collected[0].content.toLowerCase() !== "storm spriggan") message.channel.send("Invalid arguments. Please check your spelling and try again.");
+    if(collected[0].content.toLowerCase() !== "victory valkyrie" && collected[0].content.toLowerCase() !== "rising ragnaruk" && collected[0].content.toLowerCase() !== "king kerbeus" && collected[0].content.toLowerCase() !== "storm spriggan") message.channel.createMessage("Invalid arguments. Please check your spelling and try again.");
     if(collected[0].content.toLowerCase() === "victory valkyrie"){
       let starter = new (client.beys.get("Victory Valkyrie"))(message.author.id);
       db.collection("users").insertOne({_id: message.author.id, beys: [starter], coins: 100, main: 0, xp: 0, level: 1, faction: "nothing", premium: false, redeemed: [], beyparts: [], launcher: "default", items: [pocket], streak: 0, gv: 0, wins: 0, reminder: false, lastVoted: 0, favs: [], perks: [], invsort: "index", settings: {breqs: true, treqs: true, inv: true}, stars: 1, quests: [], qslots: 1, cooldowns: {vote: 0}, won: [], histories: [], hslots: 10, states: {inBattle: false, isTrading: false, isListing: false}, rank: 0, referrer: referrerid});

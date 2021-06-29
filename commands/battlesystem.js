@@ -533,7 +533,7 @@ module.exports.run = async (client, message, args, player, prefix, opponent1, op
     let versus = "/path/to/images/versus.png";
     let chance = Math.round(Math.random() * 100);
     if(chance < 11) versus = "/path/to/images/menacing2.png";
-    let images = ["/path/to/images/bbackground.png",versus,opponent1.bey.image,opponent2.bey.image];
+    let images = ["/path/to/images/bigchungus.png",versus,opponent1.bey.image,opponent2.bey.image]; 
     for(var i = 0; i < images.length; i++){
       jimps.push(jimp.read(images[i]));
     }

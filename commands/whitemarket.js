@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+/*const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let startembed = new Discord.MessageEmbed()
@@ -12,9 +12,9 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 module.exports.help = {
   name: "whitemarket",
   desc: "whitemarket",
-}
+}*/
 
-/*const Discord = require("discord.js");
+const Discord = require("discord.js");
 const ReactionHandler = require("eris-reactions");
 const Fuse = require("fuse.js");
 
@@ -407,4 +407,3 @@ module.exports.help = {
   desc: "Sell or buy Beys from the White Market.",
   usage: "whitemarket - Show the first page of the White Market.\nwhitemarket view/page <page number> - View a page of the White Market.\nwhitemarket sell <bey index number> <price> - Sell a Bey on the White Market.\nwhitemarket info <ID> - View the information of a Bey displayed on the White Market.\nwhitemarket search <Bey name>|<page number (optional)>|<price order (optional)>|<level order (optional)> - Search for a Bey in the White Market.\nwhitemarket buy <ID> - Buy a Bey from the White Market.\n\nThe IDs are the (#12345678) thing with \"(#)\" removed. Basically the numbers.\n\n**Price Orders:**\na OR ascending\nd OR descending\nr OR random\n\n**Level orders are the same as price orders.**"
 };
-*/
