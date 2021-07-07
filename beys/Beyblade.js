@@ -8,6 +8,10 @@ mongo.connect(err => {
   console.log("MongoDB connected for Beyblade.js");
 });
 
+setInterval(() => {
+  mongo.db("main").collection("ids").updateOne({_id: bname}, {$set: {latest: datas[bname].latest}});
+}, 600000);
+
 /*const ids = mongo.db("main").collection("ids")
 const id = ids.find({});
 const datas = {};
@@ -21,10 +25,6 @@ Promise.all([id]).then(data => {
   });
   console.log("Updated data!");
 });*/
-
-setInterval(() => {
-  mongo.db("main").collection("ids").updateOne({_id: bname}, {$set: {latest: datas[bname].latest}});
-}, 600000);
 
 class Beyblade {
   constructor(name, type, image, firstOwner, id){

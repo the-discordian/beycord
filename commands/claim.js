@@ -1,19 +1,3 @@
-/*const Discord = require('discord.js');
-
-module.exports.run = async (client, message, args, prefix, player, db) => {
-  let startembed = new Discord.MessageEmbed()
-  .setTitle('Claim')
-  .setDescription("There's nothing to claim, you silly goose. Due to mantainence, the RNG system is currently disabled. \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
-  .setColor("#7f7fff")
-  .setTimestamp();
-  message.channel.createMessage({embed:startembed});
-}
-
-module.exports.help = {
-  name: "claim",
-  desc: "claim",
-}*/
-
 const Discord = require("discord.js");
 const fs = require("fs");
 

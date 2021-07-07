@@ -1,20 +1,4 @@
-const Discord = require('discord.js');
-
-module.exports.run = async (client, message, args, prefix, player, db) => {
-  let startembed = new Discord.MessageEmbed()
-  .setTitle('Search')
-  .setDescription("This command floods too much...it works but I don't like it ;-; \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
-  .setColor("#7f7fff")
-  .setTimestamp();
-  message.channel.createMessage({embed:startembed});
-}
-
-module.exports.help = {
-  name: "search",
-  desc: "search",
-}
-
-/*const Fuse = require("fuse.js");
+const Fuse = require("fuse.js");
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
 	const beys = [];
@@ -42,4 +26,4 @@ module.exports.help = {
 	name: "search",
 	desc: "Search for a Bey using simple queries.",
 	usage: "search <query> - Search a Bey using a query."
-}*/
+}

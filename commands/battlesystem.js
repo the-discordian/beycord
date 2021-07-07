@@ -530,10 +530,10 @@ module.exports.run = async (client, message, args, player, prefix, opponent1, op
     }
 
     let jimps = [];
-    let versus = "/path/to/images/versus.png";
+    let versus = "https://media.discordapp.net/attachments/859836946510643210/860584653463617566/versus.png?width=487&height=498";
     let chance = Math.round(Math.random() * 100);
-    if(chance < 11) versus = "/path/to/images/menacing2.png";
-    let images = ["/path/to/images/bigchungus.png",versus,opponent1.bey.image,opponent2.bey.image]; 
+    if(chance < 11) versus = "https://media.discordapp.net/attachments/859836946510643210/860584641245347901/menacing2.png";
+    let images = ["https://media.discordapp.net/attachments/842591788309151744/860591490564358144/wp2188861.png?width=885&height=498",versus,opponent1.bey.image,opponent2.bey.image]; 
     for(var i = 0; i < images.length; i++){
       jimps.push(jimp.read(images[i]));
     }
