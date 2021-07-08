@@ -13,25 +13,22 @@ client.parts = new (Discord.Collection || Map)();
 client.items = new (Discord.Collection || Map)();
 client.spawns = new (Discord.Collection || Map)();
 
-//MongoDB Variables
+//MongoDB Connect
 const { MongoClient } = require("mongodb");
 const mongo = new MongoClient(process.env.MONGOURL, {useUnifiedTopology: true})
-
-//Mongo Connect
 mongo.connect((err) => {
     if(err) throw err;
     console.log("Connection to MongoDB database established successfully!");
 });
 
-//commandFiles
+//Command Handler
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith(".js"));
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
-//    client.commands.set(command.name || command.help.name, command);
     client.commands.set(command.name || command.help.name, command);
 }
 
-//Beys
+//Bey Handler
 const beyFiles = fs.readdirSync('./beys').filter(file => file.endsWith(".js") && file !== ".gitignore" && file !== "Beyblade.js");
 for (const file of beyFiles) {
     const bey = require(`./beys/${file}`);
@@ -40,28 +37,42 @@ for (const file of beyFiles) {
 }
 
 
-//Items
+//Item Handler
 const itemFiles = fs.readdirSync('./items').filter(file => file.endsWith(".js") && file !== "Part.js" && file !== "Beyblade.js" && file !== "Quest.js");
 for (const file of itemFiles) {
     const item = require(`./items/${file}`);
     client.items.set(item.name || item.help.name, item);
 }
 
-//async create message
+//On Message Sent
 client.on('messageCreate', async (message) => {
+    const db = mongo.db("main");
+//RNG
+    const testForNumber = Math.floor(Math.random() * 30);
+    if(testForNumber == 0) {
+        try {
+            //Run spawnsystem.js here.
+    } catch (error) {
+        let now = new Date();
+  let startembed = new Discord.MessageEmbed()
+  .setTitle('Failed to spawn')
+  .setDescription(error)
+  .setColor("#fa2c2c")
+  .setTimestamp()
+  message.channel.createMessage({embed:startembed});
+  console.log(error);
+    }}
+//Command Handler Pt.2
     if (!message.content.startsWith(prefix) || message.author.bot) return;
-	const db = mongo.db("main");
-
     message.reply = content => {
         client.createMessage(message.channel.id, `<@${message.author.id}>, ${content}`);
     }
-    
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
     if(client.commands.has(command)) {
         try {
-               let cmd = client.commands.get(command);
+            let cmd = client.commands.get(command);
             cmd.run(client, message, args, prefix, {}, db);
         } catch (error) {
             console.error(error);
@@ -72,7 +83,7 @@ client.on('messageCreate', async (message) => {
 
 //Connect client
 client.on('ready', () => {
-    console.log('Beycord is online!');
+    console.log('Beycord is online.');
     client.editStatus({name: ";help - beycord.xyz"});
 });
 client.connect();
