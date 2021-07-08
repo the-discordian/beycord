@@ -1,4 +1,5 @@
 const forsale = ["Buddy Bey Kit", "x1.5 EXP Booster 1 Hour", "Toolbox", "Perfect Constructor", "3 Premium Tickets Chest", "10 Premium Tickets Chest", "35 Premium Tickets Chest", "Void Meat", "Gift Box", "Avatar Embryo", "BeyLauncher LR"];
+const Discord = require("discord.js")
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let now = new Date();
