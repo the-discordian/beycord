@@ -6,9 +6,9 @@ module.exports.run = async (message, prefix, db, available, client) => {
   let server = await db.collection("guilds").findOne({_id: message.guild.id});
   if(server.redirect !== "nothing") spawn = await db.collection("channels").findOne({_id: server.redirect}) || {_id: message.channel.id, bey: "nothing", type: "nothing", answer: "number", settings: {spawn: true, dcommands: []}};
   else spawn = await db.collection("channels").findOne({_id: message.channel.id}) || {_id: message.channel.id, bey: "nothing", type: "nothing", answer: "number", settings: {spawn: true, dcommands: []}};
-  if(client.blackbeys.includes(spawn.bey)) return resolve(true);
-  if(message.channel.gvspawned && message.channel.gvspawned === true) return resolve(true);
-  if(spawn.bey === "Firework Pegasus" || spawn.bey === "Momentum Pegasus" || spawn.bey === "Excuse Pegasus" || spawn.bey === "Shamrock Pegasus") return resolve(true);
+//  if(client.blackbeys.includes(spawn.bey)) return resolve(true);
+//  if(message.channel.gvspawned && message.channel.gvspawned === true) return resolve(true);
+//  if(spawn.bey === "Firework Pegasus" || spawn.bey === "Momentum Pegasus" || spawn.bey === "Excuse Pegasus" || spawn.bey === "Shamrock Pegasus") return resolve(true);
   let result = Math.floor(Math.random() * available.length);
   let selected = available[result];
   let cons = client.beys.get(selected);
@@ -22,10 +22,10 @@ module.exports.run = async (message, prefix, db, available, client) => {
   .setDescription(`\`\`\`${ok1} + ${ok2}\`\`\``)
   .setColor("#f90b06")
   .setFooter(`Do ${prefix}help claim for a claiming guide.`)
-  if(client.blackbeys.includes(prebey.name)) sembed.setColor("#000000");
-  if(client.legendarybeys.includes(prebey.name)) sembed.setColor("#cb0faf");
-  if(client.rarebeys.includes(prebey.name)) sembed.setColor("#2a83d5");
-  if(client.commonbeys.includes(prebey.name)) sembed.setColor("#1bf40b");
+//  if(client.blackbeys.includes(prebey.name)) sembed.setColor("#000000");
+//  if(client.legendarybeys.includes(prebey.name)) sembed.setColor("#cb0faf");
+//  if(client.rarebeys.includes(prebey.name)) sembed.setColor("#2a83d5");
+//  if(client.commonbeys.includes(prebey.name)) sembed.setColor("#1bf40b");
   spawn.bey = selected;
   spawn.type = prebey.type;
   spawn.answer = answer;
@@ -41,3 +41,7 @@ module.exports.run = async (message, prefix, db, available, client) => {
   resolve(true);
 });
 }
+
+module.exports.help = {
+  name: "spawnsystem",
+  }

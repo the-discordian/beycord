@@ -25,8 +25,16 @@ mongo.connect((err) => {
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith(".js"));
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
-    client.commands.set(command.name || command.help.name, command);
+    client.commands.set(command.name || command.help.name, /*command.aliases || command.help.aliases,*/ command);
 }
+
+//Spawn Handler
+const spawnFiles = fs.readdirSync(`./systems`).filter(file => file.endsWith("js") && file !== "bosssystem.js");
+for(const file of spawnFiles){
+    const spawn = require(`./systems/${file}`)
+    client.spawns.set(spawn.name || spawn.help.name, spawn)
+}
+
 
 //Bey Handler
 const beyFiles = fs.readdirSync('./beys').filter(file => file.endsWith(".js") && file !== ".gitignore" && file !== "Beyblade.js");
@@ -49,9 +57,10 @@ client.on('messageCreate', async (message) => {
     const db = mongo.db("main");
 //RNG
     const testForNumber = Math.floor(Math.random() * 30);
+    const available = ["Ace Dragon"]
     if(testForNumber == 0) {
         try {
-            //Run spawnsystem.js here.
+            client.spawns.get('spawnsystem').run(message, prefix, db, available, client);
     } catch (error) {
         let now = new Date();
   let startembed = new Discord.MessageEmbed()
@@ -62,6 +71,7 @@ client.on('messageCreate', async (message) => {
   message.channel.createMessage({embed:startembed});
   console.log(error);
     }}
+
 //Command Handler Pt.2
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     message.reply = content => {
@@ -76,7 +86,7 @@ client.on('messageCreate', async (message) => {
             cmd.run(client, message, args, prefix, {}, db);
         } catch (error) {
             console.error(error);
-            message.reply(`something happened while trying to run this command. Maybe the developer is just an idiot?`);
+            message.reply(`something happened while trying to run this command. Try again later?`);
         }
     }
 });
