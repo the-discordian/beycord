@@ -12,7 +12,7 @@ class PremiumTicketsChest extends Item {
         stats.items[pocketi].premium = stats.items[pocketi].premium + 35;
         stats.items.splice(iindex, 1);
         db.collection("users").updateOne({_id: message.author.id}, {$set: {items: stats.items}});
-        message.channel.createMessage(`You acquired <:premiumgt:764101241004752896>35!`);
+        message.channel.createMessage(`You acquired <:premiumgt:863052676077453372>35!`);
     }
   }
 }

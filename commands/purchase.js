@@ -28,7 +28,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     return;
   }else if(iteme.cigv && stats.gv >= iteme.cigv){
     db.collection("users").updateOne({_id: message.author.id}, {$set: {gv: stats.gv - iteme.cigv}, $push: {items: iteme}});
-    message.channel.createMessage(`✅Successfully paid <:goldenvaltz:711477657824526418>${iteme.cigv} and bought a ${iteme.name}!`);
+    message.channel.createMessage(`✅Successfully paid <:goldenvaltz:863052675321823233>${iteme.cigv} and bought a ${iteme.name}!`);
     return;
   }else throw "An error ocurred while purchasing, please try again. If the problem persists, please kindly report it in the support server.";
 }*/

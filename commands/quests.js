@@ -29,12 +29,12 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
                 message.channel.createMessage("You unlocked Slot 3!");
             break;
             case 3:
-                if(stats.gv < 1) return message.reply("you need <:goldenvaltz:711477657824526418>1 to unlock Slot 4.");
+                if(stats.gv < 1) return message.reply("you need <:goldenvaltz:863052675321823233>1 to unlock Slot 4.");
                 db.collection("users").updateOne({_id: message.author.id}, {$set: {qslots: 4, gv: stats.gv - 1}});
                 message.channel.createMessage("You unlocked Slot 4!");
             break;
             case 4:
-                if(stats.gv < 1) return message.reply("you need <:goldenvaltz:711477657824526418>1 to unlock Slot 5.");
+                if(stats.gv < 1) return message.reply("you need <:goldenvaltz:863052675321823233>1 to unlock Slot 5.");
                 db.collection("users").updateOne({_id: message.author.id}, {$set: {qslots: 5, gv: stats.gv - 1}});
                 message.channel.createMessage("You unlocked Slot 5!");
             break;
@@ -76,5 +76,5 @@ module.exports.help = {
     name: "quests",
     aliases: ["quest", "q"],
     desc: "Complete quests and earn rewards!",
-    usage: "quests - Shows your current acquired quests\nquests claim/complete/finish/ <quest index> - Finish a quest\nquest unlock - Unlock a quest slot.\nquests remove <slot number> - Remove a quest and empty a quest slot.\n\n__**Quest Slots Prices**__\nSlot 2: <:valtz:665760587845861386>250\nSlot 3: <:valtz:665760587845861386>500\nSlot 4: <:goldenvaltz:711477657824526418>1\nSlot 5: <:goldenvaltz:711477657824526418>1"
+    usage: "quests - Shows your current acquired quests\nquests claim/complete/finish/ <quest index> - Finish a quest\nquest unlock - Unlock a quest slot.\nquests remove <slot number> - Remove a quest and empty a quest slot.\n\n__**Quest Slots Prices**__\nSlot 2: <:valtz:665760587845861386>250\nSlot 3: <:valtz:665760587845861386>500\nSlot 4: <:goldenvaltz:863052675321823233>1\nSlot 5: <:goldenvaltz:863052675321823233>1"
 }

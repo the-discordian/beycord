@@ -14,7 +14,7 @@ class Pocket extends Item {
         .setTitle("Pocket")
         .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
         .setColor("#eaab15")
-        .setDescription(`${pocket.tickets}<:giveawayticket:764101174768697385>\n${pocket.premium}<:premiumgt:764101241004752896>`)
+        .setDescription(`${pocket.tickets}<:giveawayticket:863052676182966293>\n${pocket.premium}<:premiumgt:863052676077453372>`)
         .setThumbnail("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/party-popper_1f389.png");
         message.channel.createMessage({embed: embed});
     }

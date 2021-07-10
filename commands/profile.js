@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     .addFields(
       { name: 'Blader Level', value: `${info.levels}`},
       { name: 'EXPs', value: `${info.xp}`},
-      { name: 'Balance', value: `<:valtz:834572655616196658> ${info.coins}`},
+      { name: 'Balance', value: `<:valtz:863052675968925716> ${info.coins}`},
       { name: 'Wins', value: `${info.wins}`},
       { name: 'Bey Count', value: 'No bey count'},
       { name: 'Equipped bey', value: 'No bey equipped'},

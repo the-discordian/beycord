@@ -65,16 +65,16 @@ module.exports.run = async (client, message, args, prefix, ok, db) => {
       let type = "<:Balance:760560740750458901>";
       switch(inv[i].type){
         case "Attack":
-          type = "<:Attack:760560702137565234>";
+          type = "<:Attack:863052677357109258>";
         break;
         case "Defense":
-          type = "<:Defense:760560715462475836>";
+          type = "<:Defense:863052677209915412>";
         break;
         case "Stamina":
-          type = "<:Stamina:760560729274449971>";
+          type = "<:Stamina:863052677213716530>";
         break;
         default:
-          type = "<:Balance:760560740750458901>";
+          type = "<:Balance:863052677193269249>";
       }
       iinfo += `${type} | **EXPs:** ${inv[i].xp} | **OBID:** ${inv[i].firstOwner}`;
     embed.addField(`__***[${inv[i].index}]:** Level ${inv[i].level} ${inv[i].bbname || inv[i].name} ${inv[i].gen || 1}⭐*__`, iinfo)
