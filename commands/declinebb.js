@@ -1,23 +1,7 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
-  let startembed = new Discord.MessageEmbed()
-  .setTitle('DeclineBB')
-  .setDescription("Dude what Buddy Bey are you trying to decline 😅 Like we don't even have the Buddy Bey system set up and you're not even authorized to use the command lol. \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
-  .setColor("#7f7fff")
-  .setTimestamp();
-  message.channel.createMessage({embed:startembed});
-}
-
-module.exports.help = {
-  name: "declinebb",
-  desc: "declinebb",
-}
-
-/*const Discord = require("discord.js");
-
-module.exports.run = async (client, message, args, prefix, player, db) => {
-  if(message.channel.id !== "APPROVAL CHANNEL") return;
+  if(message.channel.id !== process.env.approvalChannel) return;
   if(!args[0]) return message.reply("please provide the ID of the Buddy Bey that you want to decline.");
   let stats = await db.collection("buddybeys").findOne({_id: args[0]});
   if(!stats) return message.reply("no Buddy Bey found or it might've already been approved or declined.");
@@ -40,5 +24,6 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 module.exports.help = {
   name: "declinebb",
   desc: "Decline a Buddy Bey. AUTHORIZED ACCESS ONLY",
+  aliases: [],
   usage: "declinebb <ID> <message> - Decline a Buddy Bey according to the ID."
-}*/
+}
