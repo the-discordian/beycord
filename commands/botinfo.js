@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   .addFields(
     { name: 'Author of Beycord', value: 'SunSOG/CorruptX'},
     { name: 'Version of Beycord', value: 'Beycord V2.0'},
-    { name: 'Support Server', value: 'You can find the support server [here.](https://discord.com/invite/42vkvZMv7d)'}
+    { name: 'Support Server', value: 'You can find the support server [here.](https://discord.gg/8FJKAMDSv9)'}
 )
   .setTimestamp()
   .setFooter('Thank you to StarDust for making Beycord possible in the early days.');
@@ -17,5 +17,6 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 
 module.exports.help = {
   name: "botinfo",
+  aliases: ["bot"],
   desc: "Information about the bot."
 }

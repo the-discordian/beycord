@@ -41,18 +41,18 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       atk = atk + 3;
       stamina = stamina + 1;
     }
-//    let rarity;
+    let rarity;
 //    if(client.commonbeys.includes(bey.name)) rarity = "Common";
+//    else if(client.specialbeys.includes(bey.name)) rarity = "Special";
 //    else if(client.rarebeys.includes(bey.name)) rarity = "Rare";
 //    else if(client.legendarybeys.includes(bey.name)) rarity = "Legendary";
-//    else if(client.availablebeys.includes(bey.name)) rarity = "Unknown";
-//    else if(client.blackbeys.includes(bey.name)) rarity = "Black";
-//    else rarity = "Exclusive";
+//    else if(client.shadowbeys.includes(bey.name)) rarity = "Shadow";
+//    else rarity = "Exclusive/Event";
     let embed = new Discord.MessageEmbed()
     .setTitle(`${bey.name}'s Base Information`)
     .addField("Type", bey.type)
-//    .addField("Rarity", rarity)
-    .addField("Special Move", bey.move)
+    .addField("Rarity", rarity)
+    //.addField("Special Move", bey.specials)
     .addField("Statistics", `\`\`\`\nHitpoints: 100\nAttack: ${atk}\nStamina: ${stamina}\n\`\`\``)
     .setColor(0x7f7fff)
     .setAuthor("Beypedia", client.user.avatarURL)
@@ -106,7 +106,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       try{
 bey.special(facted, fvictim, fakemsg, player)
       } catch(err) {
-   title = "***It looks like this Bey's special is broken! Please report the erroe below to the [support server](https://discord.gg/ZvQ6F6QSUB).***";
+   title = "***It looks like this Bey's special is broken! Please report the erroe below to the [support server](https://discord.gg/8FJKAMDSv9).***";
         desc = err.stack;
       }
     }
@@ -143,7 +143,7 @@ bey.special(facted, fvictim, fakemsg, player)
     .setTitle(`${bey.name}'s Base Information`)
     .addField("Type", bey.type)
     .addField("Rarity", rarity)
-    .addField("Special Move", bey.move)
+   //.addField("Special Move", bey.specials)
     .addField("Statistics", `\`\`\`\nHitpoints: 100\nAttack: ${atk}\nStamina: ${stamina}\n\`\`\``)
     .setColor(0x7f7fff)
     .setAuthor("Beypedia", client.user.avatarURL)
@@ -197,7 +197,7 @@ bey.special(facted, fvictim, fakemsg, player)
       try{
 bey.special(facted, fvictim, fakemsg, player)
       } catch(err) {
-   title = "***It looks like this Bey's special is broken! Please report the erroe below to the [support server](https://discord.gg/ZvQ6F6QSUB).***";
+   title = "***It looks like this Bey's special is broken! Please report the erroe below to the [support server](https://discord.gg/8FJKAMDSv9).***";
         desc = err.stack;
       }
     }

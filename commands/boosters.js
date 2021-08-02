@@ -5,11 +5,11 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     if(!stats) return message.reply(`you haven't started the game yet. Please type \`${prefix}start\` to begin the game.`);
     let exp = "You have no active EXP booster.";
     let valtz = "You have no active Valtz booster.";
-//    let booster1 = client.expboost.get(message.author.id);
-//    let booster2 = client.valtzboost.get(message.author.id);
+    let booster1 = client.expboost.get(message.author.id);
+    let booster2 = client.valtzboost.get(message.author.id);
     let now = new Date();
-//    if(booster1) exp = `x${booster1.amt} (${Math.ceil((booster1.time - (now - booster1.start))/1000/60)} minutes left)`;
-//    if(booster2) valtz = `x${booster2.amt} (${Math.ceil((booster2.time - (now - booster2.start))/1000/60)} minutes left)`;
+    if(booster1) exp = `x${booster1.amt} (${Math.ceil((booster1.time - (now - booster1.start))/1000/60)} minutes left)`;
+    if(booster2) valtz = `x${booster2.amt} (${Math.ceil((booster2.time - (now - booster2.start))/1000/60)} minutes left)`;
     let embed = new Discord.MessageEmbed()
     .setTitle("Active Boosters")
     .setColor("#7f7fff")
@@ -23,5 +23,6 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 module.exports.help = {
     name: "boosters",
     desc: "List all active boosters on you.",
+    aliases: [],
     usage: "boosters - List your boosters."
 }
