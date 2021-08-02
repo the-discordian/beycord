@@ -367,7 +367,6 @@ async function fight(acted, victim, logger, message){
     let member2 = await message.guild.getRESTMember(victim.id);
     if(acted.atk < 0) acted.atk = 1;
     let dmg = acted.atk;
-    if(acted.bey.ZaWarudo && acted.bey.ZaWarudo.active == true) dmg *= 2;
     victim.hp -= dmg;
     logger.add(`[${member1.effectiveName}] ${acted.bey.bbname || acted.bey.name} dealt ${dmg} damage.`);
     if(bchance < 26 && acted.bey.type === "Attack" && acted.effectAllowed === true){
@@ -417,7 +416,6 @@ async function fight(acted, victim, logger, message){
     if(acted.bey.type === "Attack") acted.stamina = acted.stamina + 3
     else if(acted.bey.type === "Balance") acted.stamina = acted.stamina + 2.6
     else acted.stamina = acted.stamina + 2;
-    if(acted.bey.ZaWarudo && acted.bey.ZaWarudo.active == true) acted.stamina += 1;
     logger.add(`[${member1.effectiveName}] ${acted.bey.bbname || acted.bey.name} spun more. Stamina is increased by 1 and will retain for 1 round.`)
     if(hchance < 26 && acted.bey.type === "Stamina" && acted.effectAllowed === true){
       acted.hp = acted.hp + victim.atk;
@@ -435,7 +433,6 @@ async function fight(acted, victim, logger, message){
     return new Promise(async (resolve, reject) => {
       let member1 = await message.guild.getRESTMember(acted.id);
       acted.sp++;
-      if(acted.bey.ZaWarudo && acted.bey.ZaWarudo.active == true) acted.sp++;
       logger.add(`[${member1.effectiveName}] ${acted.bey.bbname || acted.bey.name} charged its energy.`);
       resolve(true);
     })
@@ -612,5 +609,6 @@ module.exports.run = async (client, message, args, player, prefix, opponent1, op
     countdown(message, opponent1, opponent2, player, prefix, client, msg, logger);
   }
   module.exports.help = {
-    name: "battlesystem"
+    name: "battlesystem",
+    aliases: []
      }  
