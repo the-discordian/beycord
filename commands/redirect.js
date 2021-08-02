@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let stats = await db.collection("guilds").findOne({_id: message.guild.id});
   if(!stats){
-    db.collection("guilds").insert({_id: message.guild.id,redirect: "nothing",prefix: ";",bey: "nothing",type: "nothing",answer: "number",disabled: []});
+    db.collection("guilds").insertOne({_id: message.guild.id,redirect: "nothing",prefix: ";",bey: "nothing",type: "nothing",answer: "number",disabled: []});
     stats = await db.collection("guilds").findOne({_id: message.guild.id});
   }
   if(!message.member.permission.has("manageGuild")) return message.reply("woah there partner. You didn't met the requirements to use this command. Missing permission: MANAGE_SERVER");
