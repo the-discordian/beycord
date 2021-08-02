@@ -8,8 +8,8 @@ Beycord
 - [Useful Links](#useful-links)
 
 # External Repositories
-**[BCWorkshop](https://github.com/SunSOG/bcworkshop)** - The custom-coded library used to create Beys.  
-**[Beys](https://github.com/SunSOG/beys)** - External repository to store created Beys. If you want to contribute a Bey, push it here instead.
+**[BCWorkshop](https://github.com/CorruptX/bcworkshop)** - The custom-coded library used to create Beys.  
+**[Beys](https://github.com/CorruptX/beys)** - External repository to store created Beys. If you want to contribute a Bey, push it here instead.
 
 # Useful Links
 [Eris Discord Library](https://abal.moe/Eris/) (Main library)  

@@ -24,7 +24,7 @@ We always welcome forks (copies) of the bot to be made as long as it abide our [
 - Get a separate name and profile picture for your bot to avoid confusion with the main bot.
 - You need to create your own [MongoDB](https://www.mongodb.com/) database to work with your forked bot.
 - Be sure to store all your important stuff (bot tokens, MongoDB login URIs, etc.) in an [.env](https://www.freecodecamp.org/news/heres-how-you-can-actually-use-node-environment-variables-8fdf98f53a0a/) file and access it in your code using `process.env.NAME`. DO NOT type them directly in your code as people can just steal it to perform malicious actions. Our [.gitignore](https://github.com/CorruptX/beycord/blob/dev/.gitignore) makes sure that .env files do not accidentally get uploaded along with a Git commit.
-- Do not try to impersonate the main bot or any other fork with your fork. Get original and you might even have a chance to get a channel dedicated to your fork in our [Discord server](https://discord.gg/ZvQ6F6QSUB).
+- Do not try to impersonate the main bot or any other fork with your fork. Get original and you might even have a chance to get a channel dedicated to your fork in our [Discord server](https://discord.gg/8FJKAMDSv9).
 - To avoid your bot's data polluting the game logs of the main bot, create your own [Discord webhooks](https://discord.com/developers/docs/resources/webhook) to capture them.
 
 That's it, have fun forking! If you feel like making your own fork is a bit too complex, you can try contributing to the main project or other forks of Beycord instead as it will help us a lot too.

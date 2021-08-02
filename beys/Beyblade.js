@@ -1,30 +1,39 @@
-require("dotenv").config({path: "path/to/.env"});
-const uri = process.env.DBPASS;
+require('dotenv').config();
+const uri = process.env.MONGOURL;
 const MongoClient = require("mongodb").MongoClient;
-const mongo = new MongoClient(uri, {useNewUrlParser: true,useUnifiedTopology: true});
-let bname = "Beyblade"
+const mongo = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
-mongo.connect(err => {
-  console.log("MongoDB connected for Beyblade.js");
-});
+let bname = "Beyblade";
+let datas = {}
 
-setInterval(() => {
-  mongo.db("main").collection("ids").updateOne({_id: bname}, {$set: {latest: datas[bname].latest}});
-}, 600000);
+async function connect(){
+  try{
+    await mongo.connect()
+    await othercode()
+  } catch(err){
+    console.log(`An error has occured! Error: ${err}`)
+  }
+}
+connect()
 
-/*const ids = mongo.db("main").collection("ids")
-const id = ids.find({});
-const datas = {};
-Promise.all([id]).then(data => {
-  let beys = data[0];
-  beys.forEach(bey => {
-    datas[bey._id] = {
-      latest: bey.latest,
-      name: bey._id
-    }
+async function othercode(){
+  let ids = mongo.db("main").collection("ids");
+  const id = ids.find({});
+  Promise.all([id]).then(data => {
+    let beys = data[0];
+    beys.forEach(bey => {
+      datas[bey._id] = {
+        latest: bey.latest,
+        name: bey._id
+      }
+    });
+    console.log("Updated data!");
   });
-  console.log("Updated data!");
-});*/
+
+  setInterval(() => {
+    mongo.db("main").collection("ids").updateOne({_id: bname}, {$set: {latest: datas[bname].latest}});
+  }, 600000);
+}
 
 class Beyblade {
   constructor(name, type, image, firstOwner, id){
@@ -42,15 +51,15 @@ class Beyblade {
     if(id) this.id = id;
     else {
     if(this.name !== "Buddy Bey"){
-/*      if(datas[this.name]){
+      if(datas[this.name]){
         this.id = datas[this.name].latest || 1;
         datas[this.name].latest = (datas[this.name].latest || 1) + 1;
       }else{
         mongo.db("main").collection("ids").insertOne({_id: this.name, latest: 2});
         datas[this.name] = {latest: 2};
         this.id = 1;
-      }*/
-//    ids.updateOne({_id: this.name}, {$set: {latest: datas[this.name].latest}});
+      }
+    mongo.db("main").collection("ids").updateOne({_id: this.name}, {$set: {latest: datas[this.name].latest}});
     }
   }
   }
