@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     let toremove = Math.floor(stats.wins/100);
     let amt = 30000 + ((rank+toremove-1)*5000);
     db.collection("users").updateOne({_id: message.author.id}, {$set: {coins: stats.coins + amt, wins: stats.wins - (toremove*100), won: [], rank: rank + toremove, totalwins: totalwins+(toremove*100)}});
-    message.channel.createMessage(`:tada:__**Ranked Up!**__:tada:\nYou are now Rank ${rank+toremove} and you received <:valtz:665760587845861386>${amt}.`)
+    message.channel.createMessage(`:tada:__**Ranked Up!**__:tada:\nYou are now Rank ${rank+toremove} and you received <:valtz:863052675968925716>${amt}.`)
 }
 
 module.exports.help = {
