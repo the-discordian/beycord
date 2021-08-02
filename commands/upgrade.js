@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
         case 1:
             if(main.level < 20) return message.channel.createMessage("*Upgrade failed!*. Please reach the current level cap (Level 20) before attempting an upgrade.")
             if(stats.stars < 25) return message.channel.createMessage("*Upgrade failed!* You don't have enough stars.");
-            let images = [main.image, "/path/to/images/gen2.png", "/path/to/images/background.png"];
+            let images = [main.image, "https://media.discordapp.net/attachments/863630426411892766/865079465717792778/null.png?width=498&height=498", "https://media.discordapp.net/attachments/863630426411892766/865079465717792778/null.png?width=498&height=498"];
             let jimps = [];
             for(var i = 0; i < images.length; i++){
                 jimps.push(jimp.read(images[i]));
@@ -27,7 +27,10 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
                 data[2].composite(data[1], 0, 0);
                 let written = await data[2].writeAsync(`/path/to/tempimages/${message.author.id}gen2.png`);
             });
-            let wait = await client.delay(5000);
+
+            //HERE IT IS OFFICER RIGHT BELOW THIS >:(
+
+        //    let wait = await client.delay(5000);
             let gen2image;
             try{gen2image = fs.readFileSync(`/path/to/tempimages/${message.author.id}gen2.png`)}catch(err){message.channel.createMessage(`*Upgrade failed!* Please try again.`);db.collection("users").updateOne({_id: message.author.id}, {$set: {stars: stats.stars - 1}});gen2image = null;};
             if(gen2image){
@@ -52,7 +55,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
             let isBB = stats.beys[stats.main].name === "Buddy Bey";
             if(isBB) backup = stats.beys[stats.main];
             else backup = new (client.beys.get(stats.beys[stats.main].name))("1", "123");
-            let images2 = [backup.image, "/path/to/images/gen3.png", "/path/to/images/background.png"];
+            let images2 = [backup.image, "https://media.discordapp.net/attachments/863630426411892766/865079465717792778/null.png?width=498&height=498", "https://media.discordapp.net/attachments/863630426411892766/865079465717792778/null.png?width=498&height=498"];
             let jimps2 = [];
             for(var i = 0; i < images2.length; i++){
                 jimps2.push(jimp.read(images2[i]));
@@ -69,7 +72,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
                 data[2].composite(data[1], 0, 0);
                 let written = await data[2].writeAsync(`/path/to/tempimages/${message.author.id}gen3.png`);
             });
-            let wait2 = await client.delay(5000);
+        //    let wait2 = await client.delay(5000);
             let gen3image;
             try{gen3image = fs.readFileSync(`/path/to/tempimages/${message.author.id}gen3.png`)}catch(err){message.channel.createMessage(`*Upgrade failed!* Please try again.`);db.collection("users").updateOne({_id: message.author.id}, {$set: {stars: stats.stars - 1}});gen3image = null;};
             if(gen3image){
@@ -94,7 +97,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
             let isBB2 = stats.beys[stats.main].name === "Buddy Bey";
             if(isBB2) backup2 = stats.beys[stats.main];
             else backup2 = new (client.beys.get(stats.beys[stats.main].name))("1", "123");
-            let images3 = [backup2.image, "/path/to/images/gen3.png", "/path/to/images/gen4down.png"];
+            let images3 = [backup2.image, "https://media.discordapp.net/attachments/863630426411892766/865079465717792778/null.png?width=498&height=498", "https://media.discordapp.net/attachments/863630426411892766/865079465717792778/null.png?width=498&height=498"];
             let jimps3 = [];
             for(var i = 0; i < images3.length; i++){
                 jimps3.push(jimp.read(images3[i]));
@@ -111,7 +114,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
                 }
                 let written = await data[2].writeAsync(`/path/to/tempimages/${message.author.id}gen4.png`);
             });
-            let wait3 = await client.delay(5000);
+        //    let wait3 = await client.delay(5000);
             let gen4image;
             try{gen4image = fs.readFileSync(`/path/to/tempimages/${message.author.id}gen4.png`)}catch(err){message.channel.createMessage(`*Upgrade failed!* Please try again.`);db.collection("users").updateOne({_id: message.author.id}, {$set: {stars: stats.stars - 1}});gen4image = null;};
             if(gen4image){
@@ -136,7 +139,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
             let isBB3 = stats.beys[stats.main].name === "Buddy Bey";
             if(isBB3) backup3 = stats.beys[stats.main];
             else backup3 = new (client.beys.get(stats.beys[stats.main].name))("1", "123");
-            let images4 = [backup3.image, "/path/to/images/gen3.png", "/path/to/images/gen4down.png"];
+            let images4 = [backup3.image, "https://media.discordapp.net/attachments/863630426411892766/865079465717792778/null.png?width=498&height=498", "https://media.discordapp.net/attachments/863630426411892766/865079465717792778/null.png?width=498&height=498"];
             let jimps4 = [];
             for(var i = 0; i < images4.length; i++){
                 jimps4.push(jimp.read(images4[i]));
@@ -153,9 +156,9 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
                 }
                 let written = await data[2].writeAsync(`/path/to/tempimages/${message.author.id}gen5.png`);
             });
-            let wait4 = await client.delay(5000);
+        //    let wait4 = await client.delay(5000);
 
-            /*
+            /*//
             let encoder = new gifencoder(524, 524);
             encoder.createReadStream().pipe(fs.createWriteStream(`/path/to/tempimages/${message.author.id}gen5.gif`));
             encoder.start()
@@ -192,7 +195,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
             encoder.finish();
 
             let wait5 = await client.delay(1500);
-            */
+            *///
 
             //ABOVE IS THE FAILED GEN 5 GIF CODE!! Fix it if you somehow figure it out lol.
 
