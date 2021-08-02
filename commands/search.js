@@ -25,5 +25,6 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 module.exports.help = {
 	name: "search",
 	desc: "Search for a Bey using simple queries.",
-	usage: "search <query> - Search a Bey using a query."
+	usage: "search <query> - Search a Bey using a query.",
+	aliases: []
 }
