@@ -3,12 +3,10 @@ const Discord = require("discord.js");
 module.exports.run = async (message, prefix, db, available, client) => {
   return new Promise(async (resolve, reject) => {
   let spawn;
+
   let server = await db.collection("guilds").findOne({_id: message.guild.id});
   if(server.redirect !== "nothing") spawn = await db.collection("channels").findOne({_id: server.redirect}) || {_id: message.channel.id, bey: "nothing", type: "nothing", answer: "number", settings: {spawn: true, dcommands: []}};
   else spawn = await db.collection("channels").findOne({_id: message.channel.id}) || {_id: message.channel.id, bey: "nothing", type: "nothing", answer: "number", settings: {spawn: true, dcommands: []}};
-//  if(client.blackbeys.includes(spawn.bey)) return resolve(true);
-//  if(message.channel.gvspawned && message.channel.gvspawned === true) return resolve(true);
-//  if(spawn.bey === "Firework Pegasus" || spawn.bey === "Momentum Pegasus" || spawn.bey === "Excuse Pegasus" || spawn.bey === "Shamrock Pegasus") return resolve(true);
   let result = Math.floor(Math.random() * available.length);
   let selected = available[result];
   let cons = client.beys.get(selected);
@@ -38,7 +36,7 @@ module.exports.run = async (message, prefix, db, available, client) => {
     db.collection("channels").updateOne({_id: message.channel.id}, {$set:{bey: selected, type: prebey.type, answer: answer}});
     message.channel.createMessage({embed:sembed});
   }
-  resolve(true);
+ resolve(true);
 });
 }
 
