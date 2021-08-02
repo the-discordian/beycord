@@ -30,22 +30,22 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   if(!bey2) return message.reply("second Bey not found.");
   if(bey1.attached || bey2.attached) return message.channel.createMessage(`Please \`${prefix}detach\` the item on your Bey before attempting to trade it.`);
   let cost = 10;
-  if(client.commonbeys.includes(bey1.name)) cost += 10;
+ /* if(client.commonbeys.includes(bey1.name)) */cost += 10;/*
   else if(client.rarebeys.includes(bey1.name)) cost += 25;
   else if(client.legendarybeys.includes(bey1.name)) cost += 50;
   else if(client.availablebeys.includes(bey1.name)) cost += 500;
   else if(client.blackbeys.includes(bey1.name)) cost += 1000;
-  else cost += 1000;
-  if(client.commonbeys.includes(bey2.name)) cost += 10;
+  else cost += 1000;*/
+  /*if(client.commonbeys.includes(bey2.name)) */cost += 10;/*
   else if(client.rarebeys.includes(bey2.name)) cost += 25;
   else if(client.legendarybeys.includes(bey2.name)) cost += 50;
   else if(client.availablebeys.includes(bey2.name)) cost += 500;
   else if(client.blackbeys.includes(bey2.name)) cost += 1000;
-  else cost += 1000;
+  else cost += 1000;*/
   let halved = Math.round(cost / 2);
-  if(stats.coins < halved || stats2.coins < halved) return message.channel.createMessage(`Insufficient Valtz. Make sure both players have enough Valtz to pay for the trading fees. (<:valtz:665760587845861386>${halved})`)
+  if(stats.coins < halved || stats2.coins < halved) return message.channel.createMessage(`Insufficient Valtz. Make sure both players have enough Valtz to pay for the trading fees. (<:valtz:863052675968925716>${halved})`)
   let jimps = [];
-  let images = ["/path/to/images/tbackground.png", bey1.image, bey2.image];
+  let images = ["https://media.discordapp.net/attachments/859836946510643210/869706489013604442/noimage.png?width=3840&height=2160", bey1.image, bey2.image];
   for(var i = 0; i < images.length; i++){
     jimps.push(jimp.read(images[i]));
   }
@@ -60,10 +60,10 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       console.log("Image written!")
     });
   });
-  let wait = await client.delay(1500);
+  //let wait = await client.delay(1500);
   let tradeimage = fs.readFileSync(`/path/to/tempimages/${message.author.id}-${tuser.id}trade.png`);
   let embed = new Discord.MessageEmbed()
-  .setDescription(`${message.member.effectiveName} is trading a ***Level ${bey1.level} ${bey1.name}*** for ${tuser.effectiveName}'s ***Level ${bey2.level} ${bey2.name}***.\n\nThe trade will proceed once both players have confirmed the trade by reacting to this message with a ✅. React with ❌ to cancel the trade immediately when it's your turn.\nWaiting for <@${message.author.id}> to react...\n\n**Price:** <:valtz:665760587845861386>${cost} (Will be splitted)`)
+  .setDescription(`${message.member.effectiveName} is trading a ***Level ${bey1.level} ${bey1.name}*** for ${tuser.effectiveName}'s ***Level ${bey2.level} ${bey2.name}***.\n\nThe trade will proceed once both players have confirmed the trade by reacting to this message with a ✅. React with ❌ to cancel the trade immediately when it's your turn.\nWaiting for <@${message.author.id}> to react...\n\n**Price:** <:valtz:863052675968925716>${cost} (Will be splitted)`)
   .setColor("#7f7fff")
   .setTimestamp()
   .setImage(`attachment://${message.author.id}-${tuser.id}trade.png`);
