@@ -27,6 +27,7 @@ module.exports.run = async (client, message, args, prefix, player, db, cmdt) => 
 
 module.exports.help = {
   name: "ping",
+  aliases: [],
   desc: "Shows how fast the bot is working.",
   usage: "ping - Shows the ping.\nping --adv - A more advanced and more detailed version of the ping command for the nerds."
 }
