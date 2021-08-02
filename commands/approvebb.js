@@ -1,23 +1,6 @@
-const Discord = require('discord.js');
-
+const Discord = require("discord.js");
 module.exports.run = async (client, message, args, prefix, player, db) => {
-  let startembed = new Discord.MessageEmbed()
-  .setTitle('ApproveBB')
-  .setDescription("You are not authorized to use this command. \n[Check out our Discord Server!](https://discord.com/invite/42vkvZMv7d)")
-  .setColor("#7f7fff")
-  .setTimestamp();
-  message.channel.createMessage({embed:startembed});
-}
-
-module.exports.help = {
-  name: "approvebb",
-  desc: "approvebb",
-}
-
-/*const Discord = require("discord.js");
-
-module.exports.run = async (client, message, args, prefix, player, db) => {
-  if(message.channel.id !== "APPROVAL CHANNEL") return;
+  if(message.channel.id !== process.env.approvalChannel) return;
   if(!args[0]) return message.reply("please provide the ID of the Buddy Bey that you want to approve.");
   let stats = await db.collection("buddybeys").findOne({_id: args[0]});
   if(!stats) return message.reply("no Buddy Bey found or it might've already been approved or declined.");
@@ -27,7 +10,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   if(!args[1]) return message.reply("please leave a message for the Buddy Bey submitter.");
   let amessage = args.slice(1).join(" ");
   let congratulate = new Discord.MessageEmbed()
-  .setTitle(`🎉 Congratulations! Your Buddy Bey, ${stats.bey.bbname} has been approved!`)
+  .setTitle(`🎉 Congratulations! Your Buddy Bey, ${stats.bey.bbname}, has been approved!`)
   .setDescription(`**Approver:** ${message.author.username}#${message.author.discriminator}\n**Message from approver:** ${amessage}`)
   .setColor("#7f7fff")
   .setTimestamp();
@@ -38,10 +21,9 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   dmchannel.createMessage({embed: congratulate});
   message.channel.createMessage(`✅ Successfully approved #${args[0]}!`);
 }
-
 module.exports.help = {
   name: "approvebb",
   desc: "Approve a Buddy Bey. AUTHORIZED ACCESS ONLY",
+  aliases: [],
   usage: "approvebb <ID> <message> - Approve a Buddy Bey according to the ID."
 }
-*/
