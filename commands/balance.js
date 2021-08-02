@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   .setAuthor(message.author.tag, message.author.avatarURL)
   .setTitle("Your balance")
   .setThumbnail("https://cdn.discordapp.com/attachments/496658978638397450/746868144491987014/beycordbag.png")
-  .setDescription(`<:valtz:863052675968925716> ${coins.coins}\n⭐ ${coins.stars}`)
+  .setDescription(`<:valtz:863052675968925716> ${coins.coins}\n<:goldenvaltz:863052675321823233> ${coins.gv}\n⭐ ${coins.stars}`)
   .setColor("#50c878");
   embed.addField("Pending", `<:valtz:863052675968925716> ${user.balance}`)
   client.createMessage(message.channel.id, {embed:embed});
@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 
 module.exports.help = {
   name: "balance",
-  aliases: ["bal", "coins", "starpoints"],
+  aliases: ["bal", "coins", "goldenvaltz", "gv"],
   desc: "Shows your currencies.",
   usage: "balance - Shows your balance.\nbalance claim - Claim your pending balance."
 }
