@@ -11,7 +11,7 @@ class AoiValt {
         this.logs = "The battle started! You have 5 minutes to make Valt bald!\n";
         this.image2 = "https://static.wikia.nocookie.net/beyblade/images/6/6d/Beyblade_Burst_Sparking_Valt_Aoi.png/revision/latest/scale-to-width-down/300?cb=20200408004719";
         this.users = [];
-        this.rewards = "16 EXPs and <:valtz:665760587845861386>1200.";
+        this.rewards = "16 EXPs and <:valtz:863052675968925716>1200.";
         this.ongoing = true;
         this.startTime = new Date();
         this.notifs = [];

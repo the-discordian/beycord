@@ -11,7 +11,7 @@ class StarFatinum {
         this.logs = "The battle started! You have 5 minutes to destroy Star Fatinum! WRYYYYY!!\n";
         this.image2 = "https://cdn.discordapp.com/attachments/744397864813330473/749416329529917511/1598745130639.png";
         this.users = [];
-        this.rewards = "a Star Platinum avatar item, 25 EXPs and <:valtz:665760587845861386>2000.";
+        this.rewards = "a Star Platinum avatar item, 25 EXPs and <:valtz:863052675968925716>2000.";
         this.ongoing = true;
         this.startTime = new Date();
         this.notifs = [];

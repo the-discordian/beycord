@@ -11,7 +11,7 @@ class KurenaiShu {
         this.logs = "The battle started! You have 5 minutes to kil- I mean beat Shu!\n";
         this.image2 = "https://static.wikia.nocookie.net/beyblade/images/9/9e/Beyblade_Burst_Shu_Kurenai.png/revision/latest/scale-to-width-down/552?cb=20191102221531";
         this.users = [];
-        this.rewards = "15 EXPs and <:valtz:665760587845861386>800.";
+        this.rewards = "15 EXPs and <:valtz:863052675968925716>800.";
         this.ongoing = true;
         this.startTime = new Date();
         this.notifs = [];
