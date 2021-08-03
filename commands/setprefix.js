@@ -17,7 +17,6 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 
 }
 
-
 module.exports.help = {
   name: "setprefix",
   aliases: ["sp"]

@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
         });
         console.log("2")
         for(var o = 1; o < sorted.length; o++){
-            if(sorted[o].starred !== true && sorted[o].name !== "Buddy Bey" && stats.beys.indexOf(sorted[o]) !== 0 && sorted[o].level !== 0 && sorted[o].level !== 100 ){//&& (client.commonbeys.includes(sorted[o].name) || client.rarebeys.includes(sorted[o].name) || client.legendarybeys.includes(sorted[o].name))){
+            if(sorted[o].starred !== true && sorted[o].name !== "Buddy Bey" && stats.beys.indexOf(sorted[o]) !== 0 && sorted[o].level !== 0 && sorted[o].level !== 100 ){//&& (client.commonbeys.includes(sorted[o].name) || client.specialbeys.includes(sorted[o].name) || client.rarebeys.includes(sorted[o].name))){
                 stats.beys.splice(stats.beys.indexOf(sorted[o]), 1);
                 price = price + 25;
             }

@@ -27,7 +27,8 @@ class GiftBox extends Item {
                 for(var i = 0; i < box.beys.length; i++){
                     let bey = box.beys[i]
                     let rarity;
-                    if(client.commonbeys.includes(bey.name)) rarity = "Common";
+                /*    if(client.commonbeys.includes(bey.name)) rarity = "Common";
+                    else if(client.specialbeys.includes(bey.name)) rarity = "Special";
                     else if(client.rarebeys.includes(bey.name)) rarity = "Rare";
                     else if(client.legendarybeys.includes(bey.name)) rarity = "Legendary";
                     else if(client.availablebeys.includes(bey.name)) rarity = "Unknown";
@@ -58,7 +59,7 @@ class GiftBox extends Item {
                             cost = cost + 1000;
                             exp = exp + 12;
                         break;
-                    }
+                    }*/
                     if(box.beys[i].attached){
                         cost += 15;
                         exp += 3;

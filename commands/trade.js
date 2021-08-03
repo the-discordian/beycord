@@ -30,13 +30,15 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   if(!bey2) return message.reply("second Bey not found.");
   if(bey1.attached || bey2.attached) return message.channel.createMessage(`Please \`${prefix}detach\` the item on your Bey before attempting to trade it.`);
   let cost = 10;
- /* if(client.commonbeys.includes(bey1.name)) */cost += 10;/*
-  else if(client.rarebeys.includes(bey1.name)) cost += 25;
-  else if(client.legendarybeys.includes(bey1.name)) cost += 50;
+  cost += 10;
+ /* if(client.commonbeys.includes(bey1.name)) cost += 10;
+  else if(client.specialbeys.includes(bey1.name)) cost += 25;
+  else if(client.rarebeys.includes(bey1.name)) cost += 50;
+  else if (client.legendarybeys.includes(bey1.name)) cost += 100
   else if(client.availablebeys.includes(bey1.name)) cost += 500;
-  else if(client.blackbeys.includes(bey1.name)) cost += 1000;
+  else if(client.shadowbeys.includes(bey1.name)) cost += 1000;
   else cost += 1000;*/
-  /*if(client.commonbeys.includes(bey2.name)) */cost += 10;/*
+  /*if(client.commonbeys.includes(bey2.name)) cost += 10;
   else if(client.rarebeys.includes(bey2.name)) cost += 25;
   else if(client.legendarybeys.includes(bey2.name)) cost += 50;
   else if(client.availablebeys.includes(bey2.name)) cost += 500;

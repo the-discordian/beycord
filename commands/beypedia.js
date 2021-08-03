@@ -46,13 +46,15 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
 //    else if(client.specialbeys.includes(bey.name)) rarity = "Special";
 //    else if(client.rarebeys.includes(bey.name)) rarity = "Rare";
 //    else if(client.legendarybeys.includes(bey.name)) rarity = "Legendary";
+//    else if(client.availablebeys.includes(bey.name)) rarity = "Unknown";
 //    else if(client.shadowbeys.includes(bey.name)) rarity = "Shadow";
 //    else rarity = "Exclusive/Event";
+rarity = "*Rarities not set up*"
     let embed = new Discord.MessageEmbed()
     .setTitle(`${bey.name}'s Base Information`)
     .addField("Type", bey.type)
     .addField("Rarity", rarity)
-    //.addField("Special Move", bey.specials)
+//  .addField("Special Move", bey.specials)
     .addField("Statistics", `\`\`\`\nHitpoints: 100\nAttack: ${atk}\nStamina: ${stamina}\n\`\`\``)
     .setColor(0x7f7fff)
     .setAuthor("Beypedia", client.user.avatarURL)
@@ -134,16 +136,18 @@ bey.special(facted, fvictim, fakemsg, player)
     }
     let rarity;
 //    if(client.commonbeys.includes(bey.name)) rarity = "Common";
-//     if(client.rarebeys.includes(bey.name)) rarity = "Rare";
+//    else if(client.specialbeys.includes(bey.name)) rarity = "Special";
+//    else if(client.rarebeys.includes(bey.name)) rarity = "Rare";
 //    else if(client.legendarybeys.includes(bey.name)) rarity = "Legendary";
 //    else if(client.availablebeys.includes(bey.name)) rarity = "Unknown";
-//    else if(client.blackbeys.includes(bey.name)) rarity = "Black";
-//    else rarity = "Exclusive";
+//    else if(client.shadowbeys.includes(bey.name)) rarity = "Shadow";
+//    else rarity = "Exclusive/Event";
+rarity = "*Rarities not set up*"
     let embed = new Discord.MessageEmbed()
     .setTitle(`${bey.name}'s Base Information`)
     .addField("Type", bey.type)
     .addField("Rarity", rarity)
-   //.addField("Special Move", bey.specials)
+//  .addField("Special Move", bey.specials)
     .addField("Statistics", `\`\`\`\nHitpoints: 100\nAttack: ${atk}\nStamina: ${stamina}\n\`\`\``)
     .setColor(0x7f7fff)
     .setAuthor("Beypedia", client.user.avatarURL)
