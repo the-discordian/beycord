@@ -11,9 +11,8 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       );
   }
   let crntbey = stats.beys[stats.main];
-  let reqxp = crntbey.level * 300;
   let xps = crntbey.xp % 300
-  let difference = reqxp - crntbey.xp;
+  let difference = 300-xps;
   let exps = xps + " / 300";
   if(crntbey.level == 100) exps = "**MAX LEVEL ACHIEVED**";
   let moves = "";
