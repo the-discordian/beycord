@@ -1,11 +1,34 @@
-![Beycord](https://media.discordapp.net/attachments/827034946588639272/827045523256246282/340.png)  
-Beycord
-=======
-3 years ago, SunSOG began this bot as a hobby to to learn programming languages and better his English. It was doing pretty well but it unfortunately came to an end on April 1st 2021. But now, it has been revived as an open-source project! Everyone is welcomed to work on it.
+---
+description: Beycord's official help documentation for developers and members alike.
+---
 
-**Table of contents**
-- [External Repositories](#external-repositories)
+# The Best Discord Bot for Beyblade Fans \(Documentation\)
 
-# External Repositories
-**[BCWorkshop](https://github.com/SunSOG/bcworkshop)** - The custom-coded library used to create Beys.  
-**[Beys](https://github.com/SunSOG/beys)** - External repository to store created Beys. If you want to contribute a Bey, push it here instead.
+Copyright © 2019-2021 Beycord.
+
+{% hint style="info" %}
+This is a documentation for the discord bot "Beycord", and is currently a work-in-progress. If you can't find the information you're looking for, visit the [support server ](https://discord.com/invite/ZE3qRFErhQ)and let us know.
+{% endhint %}
+
+## Reporting bugs
+
+If you spot issues or bugs in the code or bot, you can report them on our [Github](https://github.com/CorruptX/beycord/issues) page or join our [support server](https://discord.com/invite/ZE3qRFErhQ) and report them there.
+
+## Making suggestions
+
+To make a suggestion for the bot, you can open up an issue on our [Github](https://github.com/CorruptX/beycord/issues) page or send a message in the [support server](https://discord.com/invite/ZE3qRFErhQ).
+
+## Supporting the bot
+
+There are a number of ways to support the bot and what we make. Here's a list of what you can do to help out:
+
+* Supporting us through [Patreon](https://www.patreon.com/CorruptX).
+* Rate the bot on top.gg and promote the support server.
+* Add beys
+* Writing code
+* Help people in the support server if they have questions.
+
+{% page-ref page="how-to-use-the-bot/getting-started-with-beycord.md" %}
+
+
+
