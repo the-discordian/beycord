@@ -2,7 +2,7 @@ const Quest = require("./Quest.js");
 
 class Win5Battles extends Quest {
     constructor(){
-        super("Win 5 battles", "<:giveawayticket:863052676182966293>3");
+        super("Win5Battles", "<:giveawayticket:863052676182966293>3");
         this.progress = 0;
     }
     award(stats, db, iindex){

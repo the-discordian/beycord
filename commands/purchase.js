@@ -1,4 +1,4 @@
-const forsale = ["Buddy Bey Kit", "x1.5 EXP Booster 1 Hour", "Toolbox", "Perfect Constructor", "3 Premium Tickets Chest", "10 Premium Tickets Chest", "35 Premium Tickets Chest", "Void Meat", "Gift Box", "Avatar Embryo", "BeyLauncher LR"];
+const forsale = ["Buddy Bey Kit", "x1.5 EXP Booster 1 Hour", "Toolbox", "Perfect Constructor", "3 Premium Tickets Chest", "10 Premium Tickets Chest", "35 Premium Tickets Chest", "Void Meat", "GiftBox", "Avatar Embryo", "BeyLauncher LR"];
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let stats = await db.collection("users").findOne({_id: message.author.id});
   if(!stats) return message.reply(`it looks like you haven't started the game yet. Type \`\`${prefix}start\`\` to begin.`);

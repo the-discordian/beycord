@@ -1,8 +1,8 @@
-const Quest = require("./Quest.js");
+const Code = require("./Code.js");
 
-class LevelUpABeyOnce extends Quest {
+class test extends Code {
     constructor(){
-        super("LevelUpABeyOnce", "<:valtz:665760587845861386>25");
+        super("test");
     }
     award(stats, db, iindex){
         stats.quests.splice(iindex, 1);
@@ -10,4 +10,4 @@ class LevelUpABeyOnce extends Quest {
     }
 }
 
-module.exports = LevelUpABeyOnce;
+module.exports = test;

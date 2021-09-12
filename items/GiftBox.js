@@ -1,14 +1,18 @@
 const Discord = require("discord.js");
 const Item = require("./Item.js");
+const { MongoClient } = require("mongodb");
+const mongo = new MongoClient(process.env.MONGOURL, {useUnifiedTopology: true})
+mongo.connect()
 
 class GiftBox extends Item {
     constructor(){
-        super("Gift Box", 1);
+        super("GiftBox", 1);
         this.beys = [];
         this.items = [];
         this.parts = [];
     }
     async use(client, message, args, prefix, iindex){
+        const db = mongo.db("main");
         let stats = await db.collection("users").findOne({_id: message.author.id});
         if(!args[1]) return message.channel.createMessage(`Here's how you use the Gift Box correctly:\n\n\`${prefix}use ${iindex + 1} gift <player> - Gift all of the contents inside the gift box to a player.\n${prefix}use ${iindex + 1} view - View all of the contents inside the Gift box.\n${prefix}use ${iindex + 1} bey <bey index> - Add a Bey into the box.\n${prefix}use ${iindex + 1} part <part index> - Add a part into the box.\n${prefix}use ${iindex + 1} item <item index> - Add an item into the box.\`\n\n**⚠️Stuff added into the gift box cannot be retrieved!!⚠️**`)
         switch(args[1].toLowerCase()){

@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     { name: 'Support Server', value: 'You can find the support server [here.](https://discord.gg/8FJKAMDSv9)'}
 )
   .setTimestamp()
-  .setFooter('Thank you to StarDust for making Beycord possible in the early days.');
+  .setFooter('Thank you to StarDust for making Beycord possible in the early days.', client.user.avatarURL);
   message.channel.createMessage({embed:startembed});
 }
 
