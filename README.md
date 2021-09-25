@@ -2,7 +2,7 @@
 description: Beycord's official help documentation for developers and members alike.
 ---
 
-# The Best Discord Bot for Beyblade Fans \(Documentation\)
+# Beycord \(Documentation\)
 
 Copyright © 2019-2021 Beycord.
 
