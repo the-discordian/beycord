@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   else return message.channel.createMessage(`Please type \`${prefix}help trade\` to know how to use the command properly.`);
   if(!tuser) return message.reply("no player found.");
   if(tuser.id === message.author.id) return message.reply("why are you trying to trade yourself.");
-  if(tuser.id === "BOT ID") return message.reply("***No.***");
+  if(tuser.id === "827343111234519040") return message.reply("***No.***");
   let stats2 = await db.collection("users").findOne({_id: tuser.id});
   if(!stats2) return message.reply(`the player haven't started the game yet. Type \`\`${prefix}start\`\` to begin.`);
   if(stats2.settings.treqs === false) return message.reply("that player has turned off their trades.")
@@ -31,23 +31,23 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   if(bey1.attached || bey2.attached) return message.channel.createMessage(`Please \`${prefix}detach\` the item on your Bey before attempting to trade it.`);
   let cost = 10;
   cost += 10;
- /* if(client.commonbeys.includes(bey1.name)) cost += 10;
-  else if(client.specialbeys.includes(bey1.name)) cost += 25;
-  else if(client.rarebeys.includes(bey1.name)) cost += 50;
-  else if (client.legendarybeys.includes(bey1.name)) cost += 100
-  else if(client.availablebeys.includes(bey1.name)) cost += 500;
-  else if(client.shadowbeys.includes(bey1.name)) cost += 1000;
-  else cost += 1000;*/
-  /*if(client.commonbeys.includes(bey2.name)) cost += 10;
-  else if(client.rarebeys.includes(bey2.name)) cost += 25;
-  else if(client.legendarybeys.includes(bey2.name)) cost += 50;
-  else if(client.availablebeys.includes(bey2.name)) cost += 500;
-  else if(client.blackbeys.includes(bey2.name)) cost += 1000;
-  else cost += 1000;*/
+  if(client.commonbeys.has(bey1.name)) cost += 10;
+  else if(client.specialbeys.has(bey1.name)) cost += 25;
+  else if(client.rarebeys.has(bey1.name)) cost += 50;
+  else if (client.legendarybeys.has(bey1.name)) cost += 100
+  else if(client.availablebeys.has(bey1.name)) cost += 500;
+  else if(client.shadowbeys.has(bey1.name)) cost += 1000;
+  else cost += 1000;
+  if(client.commonbeys.has(bey2.name)) cost += 10;
+  else if(client.specialbeys.has(bey2.name)) cost += 25;
+  else if(client.rarebeys.has(bey2.name)) cost += 50;
+  else if(client.availablebeys.has(bey2.name)) cost += 500;
+  else if(client.shadowbeys.has(bey2.name)) cost += 1000;
+  else cost += 1000;
   let halved = Math.round(cost / 2);
-  if(stats.coins < halved || stats2.coins < halved) return message.channel.createMessage(`Insufficient Valtz. Make sure both players have enough Valtz to pay for the trading fees. (<:valtz:863052675968925716>${halved})`)
+  if(stats.coins < halved || stats2.coins < halved) return message.channel.createMessage(`Insufficient Valtz. Make sure both players have enough Valtz to pay for the trading fees. (<:valtz:899373217255407646>${halved})`)
   let jimps = [];
-  let images = ["https://media.discordapp.net/attachments/859836946510643210/869706489013604442/noimage.png?width=3840&height=2160", bey1.image, bey2.image];
+  let images = ["https://cdn.discordapp.com/attachments/859836946510643210/898330192936837120/PicsArt_10-14-05.03.22.jpg", bey1.image, bey2.image];
   for(var i = 0; i < images.length; i++){
     jimps.push(jimp.read(images[i]));
   }
@@ -65,7 +65,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   //let wait = await client.delay(1500);
   let tradeimage = fs.readFileSync(`/path/to/tempimages/${message.author.id}-${tuser.id}trade.png`);
   let embed = new Discord.MessageEmbed()
-  .setDescription(`${message.member.effectiveName} is trading a ***Level ${bey1.level} ${bey1.name}*** for ${tuser.effectiveName}'s ***Level ${bey2.level} ${bey2.name}***.\n\nThe trade will proceed once both players have confirmed the trade by reacting to this message with a ✅. React with ❌ to cancel the trade immediately when it's your turn.\nWaiting for <@${message.author.id}> to react...\n\n**Price:** <:valtz:863052675968925716>${cost} (Will be splitted)`)
+  .setDescription(`${message.member.effectiveName} is trading a ***Level ${bey1.level} ${bey1.name}*** for ${tuser.effectiveName}'s ***Level ${bey2.level} ${bey2.name}***.\n\nThe trade will proceed once both players have confirmed the trade by reacting to this message with a ✅. React with ❌ to cancel the trade immediately when it's your turn.\nWaiting for <@${message.author.id}> to react...\n\n**Price:** <:valtz:899373217255407646>${cost} (Will be splitted)`)
   .setColor("#7f7fff")
   .setTimestamp()
   .setImage(`attachment://${message.author.id}-${tuser.id}trade.png`);
@@ -126,7 +126,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   .setDescription(`-${bey1.name} +${bey2.name}`)
   .setTimestamp()
   .setColor("#007fff");
-  client.executeWebhook("ID", "TOKEN", {embeds: [webhookembed]}).catch(err => {console.error(err)});
+  client.executeWebhook("900348241659453471", "mwLuSkOJj-BYG9hf247wY3ViUj8c9bmC_pIIpg3CYBRJOFpRHOq34sVbCcIhBwo1FSLe", {embeds: [webhookembed]}).catch(err => {console.error(err)});
 }
 
 module.exports.help = {

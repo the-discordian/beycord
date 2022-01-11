@@ -2,9 +2,9 @@ const Item = require("./Item.js");
 
 class PerfectConstructor extends Item {
     constructor(){
-        super("Perfect Constructor", 2000)
+        super("PerfectConstructor", 2000)
     }
-    async use(client, message, args, prefix, iindex){
+    async use(client, message, args, prefix, iindex, db){
         let stats = await db.collection("users").findOne({_id: message.author.id});
         message.channel.createMessage("Please provide the index number of the \"Phoenixes\" you wish to use in order to construct a Perfect Phoenix using the following format: \`\`Revive Phoenix|Dead Phoenix\`\`.\n*Example: 4|5*");
         let awaitps = await message.channel.awaitMessages(m => m.author.id === message.author.id, {maxMatches: 1, time: 300000});

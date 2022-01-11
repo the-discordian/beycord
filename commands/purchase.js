@@ -1,4 +1,4 @@
-const forsale = ["Buddy Bey Kit", "x1.5 EXP Booster 1 Hour", "Toolbox", "Perfect Constructor", "3 Premium Tickets Chest", "10 Premium Tickets Chest", "35 Premium Tickets Chest", "Void Meat", "GiftBox", "Avatar Embryo", "BeyLauncher LR"];
+const forsale = ["BuddyBeyKit", "x15EXPBooster", "Toolbox", "PerfectConstructor", "PremiumTicketsChes3", "PremiumTicketsChest10", "PremiumTicketsChest35", "VoidMeat", "GiftBox", "AvatarEmbryo", "BeyLauncherLR"];
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let stats = await db.collection("users").findOne({_id: message.author.id});
   if(!stats) return message.reply(`it looks like you haven't started the game yet. Type \`\`${prefix}start\`\` to begin.`);
@@ -12,11 +12,11 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   if(iteme.cigv && stats.gv < iteme.cigv && !iteme.civ) return message.reply("you don't have enough Golden Valtz.");
   if(iteme.civ && stats.coins >= iteme.civ){
     db.collection("users").updateOne({_id: message.author.id}, {$set: {coins: stats.coins - iteme.civ}, $push: {items: iteme}});
-    message.channel.createMessage(`✅Successfully paid <:valtz:863052675968925716>${iteme.civ} and bought a ${iteme.name}!`);
+    message.channel.createMessage(`✅Successfully paid <:valtz:899373217255407646>${iteme.civ} and bought a ${iteme.name}!`);
     return;
   }else if(iteme.cigv && stats.gv >= iteme.cigv){
     db.collection("users").updateOne({_id: message.author.id}, {$set: {gv: stats.gv - iteme.cigv}, $push: {items: iteme}});
-    message.channel.createMessage(`✅Successfully paid <:goldenvaltz:711477657824526418>${iteme.cigv} and bought a ${iteme.name}!`);
+    message.channel.createMessage(`✅Successfully paid <:premiumvaltz:899373241557209158>${iteme.cigv} and bought a ${iteme.name}!`);
     return;
   }else throw "An error ocurred while purchasing, please try again. If the problem persists, please kindly report it in the support server.";
 }

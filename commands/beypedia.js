@@ -4,13 +4,13 @@ const Fuse = require("fuse.js");
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let stats = await db.collection("users").findOne({_id: message.author.id});
   if(!stats) return message.reply(`you haven't started the game yet. Type \`\`${prefix}start\`\` to begin.`);
-  let beys = client.beys.array();
+  let beys = Array.from(client.beys.values())
   let maxpage = Math.ceil(beys.length / 25);
   let page = args[0] || 1;
   let results = null;
   if(args[0]){
       const beys = [];
-	    client.beys.array().forEach(b => {
+	    Array.from(client.beys.values()).forEach(b => {
 	      if(b !== (client.beys.get("Buddy Bey")) && b !== (client.beys.get("Demonic Armageddon"))){
 	      let be = new b("1",1); 
 	      if(be.name && !beys.includes(be.name)) beys.push(be.name);
@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       let bbembed = new Discord.MessageEmbed()
       .setAuthor("Beypedia", client.user.avatarURL)
       .setTimestamp()
-      .setThumbnail("https://images.discordapp.net/avatars/BOT ID/e3ff8924f1d5d41c975907008f0059f2.png?size=512")
+      .setThumbnail("https://images.discordapp.net/avatars/827343111234519040/e3ff8924f1d5d41c975907008f0059f2.png?size=512")
       .setDescription("This is a Buddy Bey,\nA Buddy Bey can be anything.\nLike legit anything.\nFrom a reskinned God Valkyrie and blue Cho-Z Achilles, to DIO's face on a Bey and an original Bey,\nThey can exist peacefully as a Buddy Bey,\nBuddy Beys are truly interesting.\nA :tools: beside a Bey means it's a Buddy Bey.")
       .setColor(0x7f7fff);
       return message.channel.createMessage({embed: bbembed});
@@ -42,19 +42,18 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       stamina = stamina + 1;
     }
     let rarity;
-//    if(client.commonbeys.includes(bey.name)) rarity = "Common";
-//    else if(client.specialbeys.includes(bey.name)) rarity = "Special";
-//    else if(client.rarebeys.includes(bey.name)) rarity = "Rare";
-//    else if(client.legendarybeys.includes(bey.name)) rarity = "Legendary";
-//    else if(client.availablebeys.includes(bey.name)) rarity = "Unknown";
-//    else if(client.shadowbeys.includes(bey.name)) rarity = "Shadow";
-//    else rarity = "Exclusive/Event";
-rarity = "*Rarities not set up*"
+    if(client.commonbeys.has(bey.name)) rarity = "Common";
+    else if(client.specialbeys.has(bey.name)) rarity = "Special";
+    else if(client.rarebeys.has(bey.name)) rarity = "Rare";
+    else if(client.legendarybeys.has(bey.name)) rarity = "Legendary";
+    else if(client.availablebeys.has(bey.name)) rarity = "Unknown";
+    else if(client.shadowbeys.has(bey.name)) rarity = "Shadow";
+    else rarity = "Exclusive/Event";
     let embed = new Discord.MessageEmbed()
     .setTitle(`${bey.name}'s Base Information`)
     .addField("Type", bey.type)
     .addField("Rarity", rarity)
-//  .addField("Special Move", bey.specials)
+    .addField("Special Move", `${bey.specials[0].name || "None"}`)
     .addField("Statistics", `\`\`\`\nHitpoints: 100\nAttack: ${atk}\nStamina: ${stamina}\n\`\`\``)
     .setColor(0x7f7fff)
     .setAuthor("Beypedia", client.user.avatarURL)
@@ -135,19 +134,18 @@ bey.special(facted, fvictim, fakemsg, player)
       stamina = stamina + 1;
     }
     let rarity;
-//    if(client.commonbeys.includes(bey.name)) rarity = "Common";
-//    else if(client.specialbeys.includes(bey.name)) rarity = "Special";
-//    else if(client.rarebeys.includes(bey.name)) rarity = "Rare";
-//    else if(client.legendarybeys.includes(bey.name)) rarity = "Legendary";
-//    else if(client.availablebeys.includes(bey.name)) rarity = "Unknown";
-//    else if(client.shadowbeys.includes(bey.name)) rarity = "Shadow";
-//    else rarity = "Exclusive/Event";
-rarity = "*Rarities not set up*"
+    if(client.commonbeys.has(bey.name)) rarity = "Common";
+    else if(client.specialbeys.has(bey.name)) rarity = "Special";
+    else if(client.rarebeys.has(bey.name)) rarity = "Rare";
+    else if(client.legendarybeys.has(bey.name)) rarity = "Legendary";
+    else if(client.availablebeys.has(bey.name)) rarity = "Unknown";
+    else if(client.shadowbeys.has(bey.name)) rarity = "Shadow";
+    else rarity = "Exclusive/Event";
     let embed = new Discord.MessageEmbed()
     .setTitle(`${bey.name}'s Base Information`)
     .addField("Type", bey.type)
     .addField("Rarity", rarity)
-//  .addField("Special Move", bey.specials)
+    .addField("Special Move", `${bey.specials[0].name || "None"}`)
     .addField("Statistics", `\`\`\`\nHitpoints: 100\nAttack: ${atk}\nStamina: ${stamina}\n\`\`\``)
     .setColor(0x7f7fff)
     .setAuthor("Beypedia", client.user.avatarURL)
@@ -303,7 +301,7 @@ bey.special(facted, fvictim, fakemsg, player)
 
 module.exports.help = {
   name: "beypedia",
-  aliases: ["pedia","beydex","dex"],
+  aliases: ["pedia", "beydex", "dex"],
   desc: "Flip the legendary Beypedia and get information about Beys.",
   usage: "beypedia - Show the first page of Beypedia.\nbeypedia <page number> - Show a page of Beypedia.\nbeypedia <bey name> - Check a Bey's base information."
 }

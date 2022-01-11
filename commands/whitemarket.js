@@ -18,6 +18,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     let sbey = stats.beys[parseInt(args[1]) - 1];
     let sindex = parseInt(args[1]) - 1;
     if(sindex == 0) return message.channel.createMessage("No.")
+    if(sindex == stats.main) return message.channel.createMessage("No.")
     if (!sbey) return message.reply("no Bey found to put on the White Market.");
     if (!args[2]) return message.reply("please provide the price.");
     let price = parseInt(args[2]);
@@ -35,15 +36,15 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       return message.reply("please try again with an actual price.");
     if (amount > 9999999)
       return message.reply(
-        "prices can't exceed the limit of <:valtz:665760587845861386>9999999."
+        "prices can't exceed the limit of <:valtz:899373217255407646>9999999."
       );
     if (price < 1)
       return message.reply(
-        "imagine putting something on the market for free.. please give a reasonable price, I'm begging you."
+        "imagine putting something on the market for free...please give a reasonable price, I'm begging you."
       );
     let sprompt = new Discord.MessageEmbed()
       .setDescription(
-        `❓Are you sure that you want to put your Level ${sbey.level} ${sbey.name} on the White Market for <:valtz:665760587845861386>${price}?\n\n**⚠This action cannot be undone.**`
+        `❓Are you sure that you want to put your Level ${sbey.level} ${sbey.name} on the White Market for <:valtz:899373217255407646>${price}?\n\n**⚠This action cannot be undone.**`
       )
       .setAuthor(
         message.author.username + "#" + message.author.discriminator,
@@ -104,10 +105,10 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       db.collection("users").updateOne({_id: message.author.id}, {$set: {"states.isListing": false}});
       let webhookembed = new Discord.MessageEmbed()
       .setTitle(`${message.author.username}#${message.author.discriminator} (${message.author.id}) listed a Bey on White Market!`)
-      .setDescription(`It was a Level ${sbey.level} ${sbey.name} (OBID: ${sbey.firstOwner}) sold with a price of <:valtz:665760587845861386>${price}.`)
+      .setDescription(`It was a Level ${sbey.level} ${sbey.name} (OBID: ${sbey.firstOwner}) sold with a price of <:valtz:899373217255407646>${price}.`)
       .setTimestamp()
       .setColor("#ffffff");
-      client.executeWebhook("ID", "TOKEN", {embeds: [webhookembed]}).catch(err => {console.error(err)});
+      client.executeWebhook("900348446328893542", "itX7kD8lYO6iV0vprqlTaUJXsofdxznY99KBv3lzj-0Rbma7C57V9pYM1rPhumhxNhtW", {embeds: [webhookembed]}).catch(err => {console.error(err)});
     } else if (reactions[0].emoji.name === "❌") {
       let cancel = new Discord.MessageEmbed()
         .setColor(0xffffff)
@@ -156,7 +157,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
           embed.addField(
             `***Level ${item.bey.level} ${item.bey.bbname || item.bey.name}*** (#${item._id})`,
             `**Seller:** ${user.username || "Someone"}#${user.discriminator ||
-              "0000"} | **Price:** <:valtz:665760587845861386>${item.price}`, true
+              "0000"} | **Price:** <:valtz:899373217255407646>${item.price}`, true
           );
         }else if(i < (id-1)) mchecks = mchecks + 1;
       }
@@ -179,7 +180,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
           embed.addField(
             `***Level ${item.bey.level} ${item.bey.bbname || item.bey.name}*** (#${item._id})`,
             `**Seller:** ${user.username || "Someone"}#${user.discriminator ||
-              "0000"} | **Price:** <:valtz:665760587845861386>${item.price}`, true
+              "0000"} | **Price:** <:valtz:899373217255407646>${item.price}`, true
           );
         }else if(i < (allitems-1)) mchecks = mchecks + 1;
       }
@@ -223,7 +224,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
         "Seller",
         `${seller.username || "Someone"}#${seller.discriminator || "0000"}`
       )
-      .addField("Price", `<:valtz:665760587845861386>${item.price}`)
+      .addField("Price", `<:valtz:899373217255407646>${item.price}`)
       .addField("Level", crntbey.level)
       .addField("EXPs", exps)
       .addField("Total EXPs", crntbey.xp)
@@ -267,7 +268,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     if(!seller) return message.channel.createMessage("The player you are trying to buy from no longer exists. They probably got banned or got their account removed or something.");
     let suser = await client.getRESTUser(bey.seller);
     let confirmation = new Discord.MessageEmbed()
-    .setTitle(`Are you sure you want to buy the Level ${bey.bey.level} ${bey.bey.name} with a price of <:valtz:665760587845861386>${bey.price}?`)
+    .setTitle(`Are you sure you want to buy the Level ${bey.bey.level} ${bey.bey.name} with a price of <:valtz:899373217255407646>${bey.price}?`)
     .setColor("#ffffff");
     let confirm = await message.channel.createMessage({embed: confirmation});
     confirm.addReaction("✅");
@@ -298,14 +299,14 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     db.collection("users").updateOne({_id: bey.seller}, {$set: {coins: seller.coins + aftertax, items: seller.items, xp: seller.xp + exp}});
     db.collection("market").remove({_id: bey._id});
     let dmchannel = await client.getDMChannel(bey.seller);
-    if(dmchannel) dmchannel.createMessage(`Your ${bey.bey.bbname || bey.bey.name} with the market ID of #${bey._id} was bought and you earned <:valtz:665760587845861386>${cost}!`).catch(err => console.log(err));
+    if(dmchannel) dmchannel.createMessage(`Your ${bey.bey.bbname || bey.bey.name} with the market ID of #${bey._id} was bought and you earned <:valtz:863052675968925716>${cost}!`).catch(err => console.log(err));
     message.channel.createMessage(`✅Successfully bought the Level ${bey.bey.level} ${bey.bey.bbname || bey.bey.name} from ${suser.username}#${suser.discriminator}. Enjoy!`);
     let webhookembed2 = new Discord.MessageEmbed()
     .setTitle(`${message.author.username}#${message.author.discriminator} (${message.author.id}) bought a Bey from ${suser.username}#${suser.discriminator} (${suser.id}) on the White Market!`)
-    .setDescription(`It was a Level ${bey.bey.level} ${bey.bey.name} (OBID: ${bey.bey.firstOwner}) sold with the price of <:valtz:665760587845861386>${bey.price}.`)
+    .setDescription(`It was a Level ${bey.bey.level} ${bey.bey.name} (OBID: ${bey.bey.firstOwner}) sold with the price of <:valtz:899373217255407646>${bey.price}.`)
     .setTimestamp()
     .setColor("#ffffff");
-    client.executeWebhook("ID", "TOKEN", {embeds: [webhookembed2]}).catch(err => {console.error(err)});
+    client.executeWebhook("900348446328893542", "itX7kD8lYO6iV0vprqlTaUJXsofdxznY99KBv3lzj-0Rbma7C57V9pYM1rPhumhxNhtW", {embeds: [webhookembed2]}).catch(err => {console.error(err)});
   }else{
         message.channel.createMessage("Prompt cancelled.");
   }
@@ -327,7 +328,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       `Searching for ${nargs[0]}...`
     );
     const beys = [];
-	  client.beys.array().forEach(b => {
+	  Array.from(client.beys.values()).forEach(b => {
 	    if(b !== (client.beys.get("Buddy Bey"))){
 	    let be = new b(); 
 	    if(be.name) beys.push(be.name);
@@ -374,7 +375,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
         embed.addField(
           `***Level ${item.bey.level} ${item.bey.bbname || item.bey.name}*** (#${item._id})`,
           `**Seller:** ${user.username || "Someone"}#${user.discriminator ||
-            "0000"} | **Price:** <:valtz:665760587845861386>${item.price}`, true
+            "0000"} | **Price:** <:valtz:899373217255407646>${item.price}`, true
         );
       }
     }

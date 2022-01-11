@@ -6,7 +6,7 @@ class Booster extends Item {
     this.boost = boost;
     this.startTime = new Date();
   }
-  async use(client, message, args, prefix, iindex){
+  async use(client, message, args, prefix, iindex, db){
     let stats = await db.collection("users").findOne({_id: message.author.id});
     if(this.boost.valtz) client.valtzboost.set(message.author.id, {amt: this.boost.valtz, time: this.boost.time, start: this.startTime});
     if(this.boost.exp) client.expboost.set(message.author.id, {amt: this.boost.exp, time: this.boost.time, start: this.startTime});

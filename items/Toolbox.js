@@ -5,7 +5,7 @@ class Toolbox extends Item {
     constructor(){
         super("Toolbox", 250);
     }
-    async use(client, message, args, prefix, iindex){
+    async use(client, message, args, prefix, iindex, db){
         let stats = await db.collection("users").findOne({_id: message.author.id});
         if(!args[1]) return message.reply("please provide the index number of the broken Bey you wish to fix.");
         let bindex = parseInt(args[1])-1;

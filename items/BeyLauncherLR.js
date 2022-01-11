@@ -9,7 +9,7 @@ let images = {
 
 class BeyLauncherLR extends Item {
     constructor(launcher){
-        super("BeyLauncher LR", 1499, Infinity)
+        super("BeyLauncherLR", 1499, Infinity)
         let list = ["B-88", "B-119", "B-00"];
         let index = Math.floor(Math.random() * list.length);
         if(launcher) this.var = launcher.var;

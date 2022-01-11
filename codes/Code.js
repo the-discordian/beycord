@@ -1,7 +1,7 @@
 class Code {
-    constructor(name, rewards){
-        this.name = name;
+    constructor(name, completed, rewards){
+      this.name = name;
     }
-}
-
-module.exports = Code;
+  }
+  
+  module.exports = Code;

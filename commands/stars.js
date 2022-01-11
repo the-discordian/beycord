@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     for(var i = (page-1)*25; i < (page-1)*25+25; i++){
         let crnt = starred[i];
         if(crnt){
-//            if(client.blackbeys.includes(crnt.name)) stars += "<:black:721678218859511829>";
+            if(client.shadowbeys.has(crnt.name)) stars += "<:black:721678218859511829>";
             if(crnt.broken && crnt.broken === true) stars += "<a:alert:724198069226438686>";
             if(crnt.level === 0) stars += "<:level0:722078650190528583>";
             stars += `⭐**[${parseInt(stats.beys.indexOf(crnt))+1}]:** Level ${crnt.level} ${crnt.bbname || crnt.name}\n`;

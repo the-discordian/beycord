@@ -24,7 +24,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     }
     }
     await db.collection("users").updateOne({_id: message.author.id}, {$set: {beys: stats.beys, coins: stats.coins + price, main: 0}});
-    msg.edit(`Your inventory is cleared! You earned <:valtz:863052675968925716>${price} from the removed Beys. Please re\`${prefix}equip\` the Bey you want to use.`)
+    msg.edit(`Your inventory is cleared! You earned <:valtz:899373217255407646>${price} from the removed Beys. Please re\`${prefix}equip\` the Bey you want to use.`)
     console.log("3")
 }
 

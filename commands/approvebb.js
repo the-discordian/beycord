@@ -1,17 +1,17 @@
 const Discord = require("discord.js");
 module.exports.run = async (client, message, args, prefix, player, db) => {
   if(message.channel.id !== process.env.approvalChannel) return;
-  if(!args[0]) return message.reply("please provide the ID of the Buddy Bey that you want to approve.");
+  if(!args[0]) return message.reply("Please provide the ID of the Buddy Bey that you want to approve.");
   let stats = await db.collection("buddybeys").findOne({_id: args[0]});
-  if(!stats) return message.reply("no Buddy Bey found or it might've already been approved or declined.");
+  if(!stats) return message.reply("No Buddy Bey found.");
   let user = await client.getRESTUser(stats.submitter);
-  if(!user) return message.reply("an error occurred while approving this Bey. Please try again.");
+  if(!user) return message.reply("Something happened when trying to approve the Buddy Bey.");
   let statsu = await db.collection("users").findOne({_id: stats.submitter});
-  if(!args[1]) return message.reply("please leave a message for the Buddy Bey submitter.");
+  if(!args[1]) return message.reply("Please leave a message for the Buddy Bey submitter.");
   let amessage = args.slice(1).join(" ");
   let congratulate = new Discord.MessageEmbed()
   .setTitle(`🎉 Congratulations! Your Buddy Bey, ${stats.bey.bbname}, has been approved!`)
-  .setDescription(`**Approver:** ${message.author.username}#${message.author.discriminator}\n**Message from approver:** ${amessage}`)
+  .setDescription(`**Approved by:** ${message.author.username}#${message.author.discriminator}\n**Message from approver:** ${amessage}`)
   .setColor("#7f7fff")
   .setTimestamp();
   stats.bey.bbname = ":tools:" + stats.bey.bbname;
@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   db.collection("buddybeys").remove({_id: stats._id});
   let dmchannel = await user.getDMChannel();
   dmchannel.createMessage({embed: congratulate});
-  message.channel.createMessage(`✅ Successfully approved #${args[0]}!`);
+  message.reply(`✅ Successfully approved **#${args[0]}**!`);
 }
 module.exports.help = {
   name: "approvebb",

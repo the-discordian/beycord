@@ -2,16 +2,16 @@ const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
   let startembed = new Discord.MessageEmbed()
-  .setTitle('Information')
-  .setDescription('In the early days, Beycord was sponsored by [Stardust.](https://stardust.gg/)')
+  .setTitle(`Beycord's Information`)
+  .setDescription(`Beycord's server is sponsored by [Stardust](https://stardust.gg/). Stardust enables game developers to increase their revenue and improve their game's player experience. Developers can tap into the Stardust Platform's revenue sharing secondary marketplace and game explorer through our API and blockchain infrastructure.`)
   .setColor("#7f7fff")
   .addFields(
-    { name: 'Author of Beycord', value: 'SunSOG/CorruptX'},
-    { name: 'Version of Beycord', value: 'Beycord V2.0'},
-    { name: 'Support Server', value: 'You can find the support server [here.](https://discord.gg/8FJKAMDSv9)'}
+    { name: 'Owner', value: 'cobrahh#6830'},
+    { name: 'Invite', value: `Click [here](https://discord.com/api/oauth2/authorize?client_id=827343111234519040&permissions=0&scope=bot)`},
+    { name: 'Support server', value: `Click [here](https://discord.gg/8FJKAMDSv9)`},
+    { name: "Created on", value: "Tue Apr 23 2019 14:15:10 GMT+0900 (Japan Standard Time)"}
 )
   .setTimestamp()
-  .setFooter('Thank you to StarDust for making Beycord possible in the early days.', client.user.avatarURL);
   message.channel.createMessage({embed:startembed});
 }
 

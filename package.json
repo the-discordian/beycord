@@ -23,7 +23,7 @@
   "homepage": "https://github.com/CorruptX/beycord#readme",
   "dependencies": {
     "@top-gg/sdk": "^3.1.2",
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.2.0",
     "dotenv": "^8.2.0",
     "eris": "github:Catboi8/eris#interactions",
     "eris-additions": "^1.4.1",
@@ -33,6 +33,7 @@
     "gifencoder": "^2.0.1",
     "init": "^0.1.2",
     "jimp": "^0.16.1",
-    "mongodb": "^3.6.6"
+    "mongodb": "^3.6.6",
+    "node": "^16.10.0"
   }
 }

@@ -7,9 +7,9 @@ class Pocket extends Item {
         this.tickets = 0;
         this.premium = 0;
     }
-    async use(client, message, args, prefix, iindex){
+    async use(client, message, args, prefix, iindex, db){
         let stats = await db.collection("users").findOne({_id: message.author.id});
-        let pocket = stats.items[iindex];
+        let pocket = stats.items[parseInt(args[0])-1];
         let embed = new Discord.MessageEmbed()
         .setTitle("Pocket")
         .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)

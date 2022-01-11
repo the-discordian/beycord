@@ -115,9 +115,9 @@ const available = [
 
 class VoidMeat extends Item {
     constructor(){
-      super("Void Meat", 1000);
+      super("VoidMeat", 1000);
     }
-    async use(client, message, args, prefix, iindex){
+    async use(client, message, args, prefix, iindex, db){
         let msg = await message.channel.createMessage("Rolling prizes...");
         let stats = await db.collection("users").findOne({_id: message.author.id});
         let prizechance = Math.floor(Math.random() * 3);

@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 const jimp = require("jimp");
 const fs = require("fs");
-const gifencoder = require("gifencoder");
-const {createCanvas, loadImage} = require("canvas");
+//const gifencoder = require("gifencoder");
+//const {createCanvas, loadImage} = require("canvas");
 
 module.exports.run = async (client, message, args, prefix, player, db) => {
     message.channel.sendTyping();

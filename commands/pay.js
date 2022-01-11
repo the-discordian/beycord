@@ -24,12 +24,12 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
   }
   db.collection("users").updateOne({_id: user.id}, {$set: {coins: stats2.coins + amount, histories: stats2.histories}});
   db.collection("users").updateOne({_id: message.author.id}, {$set: {coins: stats.coins - amount, histories: stats.histories, xp: stats.xp + 5}});
-  message.channel.createMessage(`✅ <:valtz:863052675968925716>${amount} successfully paid to ${user.effectiveName}.`);
+  message.channel.createMessage(`✅ <:valtz:899373217255407646>${amount} successfully paid to ${user.effectiveName}.`);
   let webhookembed2 = new Discord.MessageEmbed()
-  .setTitle(`${message.author.username}#${message.author.discriminator} (${message.author.id}) paid <:valtz:863052675968925716>${amount} to ${user.username}#${user.discriminator} (${user.id})!`)
+  .setTitle(`${message.author.username}#${message.author.discriminator} (${message.author.id}) paid <:valtz:899373217255407646>${amount} to ${user.username}#${user.discriminator} (${user.id})!`)
   .setTimestamp()
   .setColor("#7f7fff");
-  client.executeWebhook("ID", "TOKEN", {embeds: [webhookembed2]}).catch(err => {console.error(err)});
+  client.executeWebhook("890650294470447134", "Cw8NGFdVQPJKdUWB-eCRhpdPlD-g09ftApbsfvzgTAjCs3fv4KvhbbH8MpPKn4TNDgBP", {embeds: [webhookembed2]}).catch(err => {console.error(err)});
 }
 
 module.exports.help = {

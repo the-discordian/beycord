@@ -57,7 +57,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
         break;
     }
     if(crntbey.attached) embed.setDescription(`**Level:** ${crntbey.level}\n**EXPs:** ${exps}\n**Total EXPs:** ${crntbey.xp}\n**Type:** ${crntbey.type}\n**ID:** ${crntbey.id || "No ID"}\n**OBID:** ${crntbey.firstOwner}\n**Attached Item:** ${crntbey.attached.name}`);
-    message.channel.createMessage({embed:embed});
+    message.channel.createMessage({embed:embed, messageReferenceID: message.id, everyone:true});
 }
 
 module.exports.help = {

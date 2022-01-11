@@ -141,7 +141,7 @@ async function start(client, message, prefix, player, db, boss){
                 .setFooter("Congratulations!")
                 .setThumbnail(boss.image2)
                 .setTimestamp();
-                client.executeWebhook("ID", "TOKEN", {embeds: [embed], embed: embed});
+                client.executeWebhook("890650294470447134", "Cw8NGFdVQPJKdUWB-eCRhpdPlD-g09ftApbsfvzgTAjCs3fv4KvhbbH8MpPKn4TNDgBP", {embeds: [embed], embed: embed});
                 db.collection("speedruns").updateOne({_id: boss.name}, {$set: {time: diff}});
             }
             return message.channel.createMessage(`${boss.name} is defeated! Surviving players each got ${boss.rewards}`);
@@ -206,7 +206,7 @@ async function start(client, message, prefix, player, db, boss){
                 .setFooter("Congratulations!")
                 .setThumbnail(boss.image2)
                 .setTimestamp();
-                client.executeWebhook("ID", "TOKEN", {embeds: [embed], embed: embed});
+                client.executeWebhook("890650294470447134", "Cw8NGFdVQPJKdUWB-eCRhpdPlD-g09ftApbsfvzgTAjCs3fv4KvhbbH8MpPKn4TNDgBP", {embeds: [embed], embed: embed});
                 db.collection("speedruns").updateOne({_id: boss.name}, {$set: {time: diff}});
             }
             return message.channel.createMessage(`${boss.name} is defeated! Surviving players each got ${boss.rewards}`);
@@ -294,23 +294,23 @@ async function start(client, message, prefix, player, db, boss){
 module.exports.run = async (client, message, prefix, player, db, bosss) => {
     let bosses;
     if(bosss) bosses = [bosss];
-    else bosses = client.bosses.array();
+    else bosses = Array.from(client.bosses.values());
     let index = Math.floor(Math.random() * bosses.length);
     let bossss = bosses[index];
     let boss = new bossss();
     let alert = new Discord.MessageEmbed()
-    .setTitle("<a:alert:724198069226438686>***ALERT!*** A boss is about to spawn in 10 minutes!")
+    .setTitle("<:alert:888867336457715772>***ALERT!*** A boss is about to spawn in 10 minutes!")
     .setColor("#eb1465")
     .setImage("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a3f544f1-f07b-4aa9-b6f9-824148c31a10/daqrpoq-f7ee01ed-ac8e-4c47-86c9-360f670365d2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYTNmNTQ0ZjEtZjA3Yi00YWE5LWI2ZjktODI0MTQ4YzMxYTEwXC9kYXFycG9xLWY3ZWUwMWVkLWFjOGUtNGM0Ny04NmM5LTM2MGY2NzAzNjVkMi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.37GhMgHrxdiLQPB8OPtK_04vGDSUum7EM4vxWzmkzYY")
-    .setDescription("React to this message with <:notify:758285253965643776> if you wish to get notified 1 minute before the boss battle starts.\n*Get your strongest and most trustworthy Bey ready, bladers!*")
+    .setDescription("React to this message with <:alert:888867336457715772> if you wish to get notified 1 minute before the boss battle starts.\n*Get your strongest and most trustworthy Bey ready, bladers!*")
     .setTimestamp();
     let alertembed = await message.channel.createMessage({embed: alert}).catch(err => {
         return;
     });
-    alertembed.addReaction("emojiName:758285253965643776")
+    alertembed.addReaction("emojiName:888867336457715772")
     let notifs = await ReactionHandler.collectReactions(alertembed, userid => true, {time: 540000});
     notifs.forEach(async reacted => {
-        if(reacted.emoji.id && reacted.emoji.id === "758285253965643776" && !boss.notifs.includes(reacted.userID)){
+        if(reacted.emoji.id && reacted.emoji.id === "888867336457715772" && !boss.notifs.includes(reacted.userID)){
             boss.notifs.push(reacted.userID);
             let dmchannel = await client.getDMChannel(reacted.userID);
             dmchannel.createMessage(`A boss is about to spawn in 1 minute at <#${message.channel.id}>!`).catch(err => console.log(err.stack));
@@ -320,3 +320,7 @@ module.exports.run = async (client, message, prefix, player, db, bosss) => {
         start(client, message, prefix, player, db, boss);
     }, 60000);
 }
+
+module.exports.help = {
+    name: "bosssystem",
+    }

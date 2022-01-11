@@ -2,7 +2,7 @@ const Quest = require("./Quest.js");
 
 class LevelUpABeyOnce extends Quest {
     constructor(){
-        super("LevelUpABeyOnce", "<:valtz:665760587845861386>25");
+        super("Level up a Bey once", "<:valtz:899373217255407646>25");
     }
     award(stats, db, iindex){
         stats.quests.splice(iindex, 1);

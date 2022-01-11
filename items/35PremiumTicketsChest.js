@@ -1,10 +1,10 @@
 const Item = require("./Item.js");
 
-class PremiumTicketsChest extends Item {
+class PremiumTicketsChest35 extends Item {
   constructor(){
-    super("35 Premium Tickets Chest", null, 10);
+    super("PremiumTicketsChest35", null, 10);
   }
-  async use(client, message, args, prefix, iindex){
+  async use(client, message, args, prefix, iindex, db){
     let stats = await db.collection("users").findOne({_id: message.author.id});
     let pockets = stats.items.filter(item => item.name === "Pocket");
     if(pockets[0]){
@@ -17,4 +17,4 @@ class PremiumTicketsChest extends Item {
   }
 }
 
-module.exports = PremiumTicketsChest;
+module.exports = PremiumTicketsChest35;

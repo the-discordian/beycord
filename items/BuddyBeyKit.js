@@ -4,9 +4,9 @@ const ReactionHandler = require("eris-reactions");
 
 class BuddyBeyKit extends Item {
   constructor(){
-    super("Buddy Bey Kit", 20000, 1);
+    super("BuddyBeyKit", 20000, 1);
   }
-  async use(client, message, args, prefix, iindex){
+  async use(client, message, args, prefix, iindex, db){
     let stats = await db.collection("users").findOne({_id: message.author.id});
     let atk = 0;
     let stamina = 0;
@@ -131,7 +131,7 @@ class BuddyBeyKit extends Item {
         .setFooter(`Submitted by ${message.author.username}#${message.author.discriminator} at`)
         .setTimestamp()
         .setColor("#7f7fff");
-        client.executeWebhook("ID", "TOKEN", {embeds: [approval], embed: approval});
+        client.executeWebhook("900348688117952522", "Pks-gG1QLxi5kWuN9xgAOjCjJaapBgZsJPKFwEVMGngXT6heeOVa9KkjqLEg1bth4GiV", {embeds: [approval], embed: approval});
         stats.beyparts.splice(stats.beyparts.indexOf(disc), 1);
         stats.beyparts.splice(stats.beyparts.indexOf(driver), 1);
         stats.items.splice(iindex, 1);
@@ -266,7 +266,7 @@ class BuddyBeyKit extends Item {
         .setFooter(`Submitted by ${message.author.username}#${message.author.discriminator} at`)
         .setTimestamp()
         .setColor("#7f7fff");
-        client.executeWebhook("ID", "TOKEN", {embeds: [approval], embed: approval});
+        client.executeWebhook("900348688117952522", "Pks-gG1QLxi5kWuN9xgAOjCjJaapBgZsJPKFwEVMGngXT6heeOVa9KkjqLEg1bth4GiV", {embeds: [approval], embed: approval});
         stats.beyparts.splice(stats.beyparts.indexOf(disc), 1);
         stats.beyparts.splice(stats.beyparts.indexOf(driver), 1);
         if(frame) stats.beyparts.splice(stats.beyparts.indexOf(frame), 1);
@@ -401,7 +401,7 @@ class BuddyBeyKit extends Item {
         .setFooter(`Submitted by ${message.author.username}#${message.author.discriminator} at`)
         .setTimestamp()
         .setColor("#7f7fff");
-        client.executeWebhook("ID", "TOKEN", {embeds: [approval], embed: approval});
+        client.executeWebhook("900348688117952522", "Pks-gG1QLxi5kWuN9xgAOjCjJaapBgZsJPKFwEVMGngXT6heeOVa9KkjqLEg1bth4GiV", {embeds: [approval], embed: approval});
         stats.beyparts.splice(stats.beyparts.indexOf(disc), 1);
         stats.beyparts.splice(stats.beyparts.indexOf(driver), 1);
         if(frame) stats.beyparts.splice(stats.beyparts.indexOf(frame), 1);
@@ -557,7 +557,7 @@ class BuddyBeyKit extends Item {
         .setColor("#7f7fff");
         if(weight) approval.setThumbnail(weight.image || bbey.image);
         else approval.setThumbnail(bbey.image);
-        client.executeWebhook("ID", "TOKEN", {embeds: [approval], embed: approval});
+        client.executeWebhook("900348688117952522", "Pks-gG1QLxi5kWuN9xgAOjCjJaapBgZsJPKFwEVMGngXT6heeOVa9KkjqLEg1bth4GiV", {embeds: [approval], embed: approval});
         stats.beyparts.splice(stats.beyparts.indexOf(disc), 1);
         stats.beyparts.splice(stats.beyparts.indexOf(driver), 1);
         if(frame) stats.beyparts.splice(stats.beyparts.indexOf(frame), 1);

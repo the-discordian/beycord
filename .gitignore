@@ -4,17 +4,3 @@ package-lock.json
 .DS_Store
 npm-debug.log
 beys
-index.js
-commands/help.js
-commands/eval.js
-commands/event.js
-commands/premium.js
-commands/spawn.js
-commands/vote.js
-commands/eval.js
-commands/invite.js
-commands/donate.js
-commands/knownbugs.js
-commands/profile.js
-commands/support.js
-beys

@@ -6,9 +6,15 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
     if(args[0] && (args[0].toLowerCase() === "claim" || args[0].toLowerCase() === "complete" || args[0].toLowerCase() === "finish")){
         if(!args[1]) return message.reply("please provide the index of the quest you wish to complete.");
         let qindex = (parseInt(args[1])-1);
-        if(!stats.quests[qindex]) return message.reply("that quest doesn't exist.");
+        if(!stats.quests[qindex]) return message.reply("That quest doesn't exist.");
         let quest = stats.quests[qindex];
-        let questc = new (client.quests.get(quest.name))();
+        let questname;
+        switch (quest.name) {
+            case 'Level up a Bey once': questname = "LevelUpABeyOnce";
+            case 'Win 3 battles': questname = "Win3Battles";
+            case 'Win 5 battles': questname = "Win5Battles";
+        }
+        let questc = new (client.quests.get(questname))();
         if(quest.completed){
             message.channel.createMessage(`Quest completed! You received ${quest.rewards}!`)
             questc.award(stats, db, qindex);
@@ -19,22 +25,22 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
         if(stats.qslots == 5) return message.reply("you already unlocked all quest slots.");
         switch(stats.qslots){
             case 1:
-                if(stats.coins < 250) return message.reply("you need <:valtz:665760587845861386>250 to unlock Slot 2.");
+                if(stats.coins < 250) return message.reply("You need <:valtz:899373217255407646>250 to unlock Slot 2.");
                 db.collection("users").updateOne({_id: message.author.id}, {$set: {qslots: 2, coins: stats.coins - 250}});
                 message.channel.createMessage("You unlocked Slot 2!");
             break;
             case 2:
-                if(stats.coins < 500) return message.reply("you need <:valtz:665760587845861386>500 to unlock Slot 3.");
+                if(stats.coins < 500) return message.reply("you need <:valtz:899373217255407646>500 to unlock Slot 3.");
                 db.collection("users").updateOne({_id: message.author.id}, {$set: {qslots: 3, coins: stats.coins - 500}});
                 message.channel.createMessage("You unlocked Slot 3!");
             break;
             case 3:
-                if(stats.gv < 1) return message.reply("you need <:goldenvaltz:863052675321823233>1 to unlock Slot 4.");
+                if(stats.gv < 1) return message.reply("you need <:premiumvaltz:899373241557209158>1 to unlock Slot 4.");
                 db.collection("users").updateOne({_id: message.author.id}, {$set: {qslots: 4, gv: stats.gv - 1}});
                 message.channel.createMessage("You unlocked Slot 4!");
             break;
             case 4:
-                if(stats.gv < 1) return message.reply("you need <:goldenvaltz:863052675321823233>1 to unlock Slot 5.");
+                if(stats.gv < 1) return message.reply("you need <:premiumvaltz:899373241557209158>1 to unlock Slot 5.");
                 db.collection("users").updateOne({_id: message.author.id}, {$set: {qslots: 5, gv: stats.gv - 1}});
                 message.channel.createMessage("You unlocked Slot 5!");
             break;
@@ -76,5 +82,5 @@ module.exports.help = {
     name: "quests",
     aliases: ["quest", "q"],
     desc: "Complete quests and earn rewards!",
-    usage: "quests - Shows your current acquired quests\nquests claim/complete/finish/ <quest index> - Finish a quest\nquest unlock - Unlock a quest slot.\nquests remove <slot number> - Remove a quest and empty a quest slot.\n\n__**Quest Slots Prices**__\nSlot 2: <:valtz:665760587845861386>250\nSlot 3: <:valtz:665760587845861386>500\nSlot 4: <:goldenvaltz:863052675321823233>1\nSlot 5: <:goldenvaltz:863052675321823233>1"
+    usage: "quests - Shows your current acquired quests\nquests claim/complete/finish/ <quest index> - Finish a quest\nquest unlock - Unlock a quest slot.\nquests remove <slot number> - Remove a quest and empty a quest slot.\n\n__**Quest Slots Prices**__\nSlot 2: <:valtz:899373217255407646>250\nSlot 3: <:valtz:899373217255407646>500\nSlot 4: <:premiumvaltz:899373241557209158>1\nSlot 5: <:premiumvaltz:899373241557209158>1"
 }

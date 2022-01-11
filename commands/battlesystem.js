@@ -306,7 +306,7 @@ async function awaitMoves(message, opponent1, opponent2, player, prefix, client,
     if(finish !== "time-out" && finish !== "cancel"){
     let bchance = Math.floor(Math.random() * 100);
 
-    let lvlupquest = winner.stats.quests.filter(quest => quest.name === "Win 3 battles");
+    let lvlupquest = winner.stats.quests.filter(quest => quest.name === "Win3Battles");
     if(lvlupquest[0]){
       lvlupquest.forEach(que => {
         let foundindex = winner.stats.quests.indexOf(que);
@@ -315,7 +315,7 @@ async function awaitMoves(message, opponent1, opponent2, player, prefix, client,
       });
     }
 
-    let lvlupquest2 = winner.stats.quests.filter(quest => quest.name === "Win 5 battles");
+    let lvlupquest2 = winner.stats.quests.filter(quest => quest.name === "Win5battles");
     if(lvlupquest2[0]){
       lvlupquest2.forEach(que => {
         let foundindex = winner.stats.quests.indexOf(que);
@@ -330,7 +330,7 @@ async function awaitMoves(message, opponent1, opponent2, player, prefix, client,
     }
 
     if(bchance <= 5){
-      if(loser.id !== "BOT ID") loser.stats.beys[loser.stats.main].broken = true;
+      if(loser.id !== "827343111234519040") loser.stats.beys[loser.stats.main].broken = true;
       player.collection("users").updateOne({_id: winner.id}, {$set: {"states.inBattle": false, wins: winner.wins, coins: winner.valtz + 80, xp: winner.xp + 20, quests: winner.stats.quests, won: winner.stats.won}});
       player.collection("users").updateOne({_id: loser.id}, {$set: {beys: loser.stats.beys, "states.inBattle": false}});
     }else{
@@ -354,7 +354,7 @@ async function awaitMoves(message, opponent1, opponent2, player, prefix, client,
     .setDescription(`It was a ${finish} finish.`)
     .setTimestamp()
     .setColor("#ff7600");
-    client.executeWebhook("ID", "TOKEN", {embeds: [webhookembed]}).catch(err => {console.error(err)});
+    client.executeWebhook("900347913417400320", "5FSgUhDZ1e6FwF3oUaTNMfQmiDESkUiTV1__Jp9_53xAVxTulXlxuE1Y0h1p2AFPn9GS", {embeds: [webhookembed]}).catch(err => {console.error(err)});
     return;
   }
   chooseMove();
@@ -520,7 +520,7 @@ module.exports.run = async (client, message, args, player, prefix, opponent1, op
     opponent2.bey = new (client.beys.get(stats2.beys[stats2.main].name))(opponent2.id, stats2.beys[stats2.main].id,stats2.beys[stats2.main]);
     opponent1.lvl = stats1.beys[stats1.main].level;
     opponent2.lvl = stats2.beys[stats2.main].level;
-    if(opponent2.id === "BOT ID"){
+    if(opponent2.id === "827343111234519040"){
       opponent2.lvl = opponent1.lvl;
       stats2.beys[stats2.main].level = opponent1.lvl;
       opponent2.bey = opponent1.bey;
@@ -530,7 +530,7 @@ module.exports.run = async (client, message, args, player, prefix, opponent1, op
     let versus = "https://media.discordapp.net/attachments/859836946510643210/860584653463617566/versus.png?width=487&height=498";
     let chance = Math.round(Math.random() * 100);
     if(chance < 11) versus = "https://media.discordapp.net/attachments/859836946510643210/860584641245347901/menacing2.png";
-    let images = ["https://media.discordapp.net/attachments/859836946510643210/863037673915416617/battle-background_1.png?width=1920&height=1080",versus,opponent1.bey.image,opponent2.bey.image]; 
+    let images = ["https://cdn.discordapp.com/attachments/859836946510643210/898329244290142288/PicsArt_10-14-04.59.27.png",versus,opponent1.bey.image,opponent2.bey.image]; 
     for(var i = 0; i < images.length; i++){
       jimps.push(jimp.read(images[i]));
     }
@@ -607,8 +607,9 @@ module.exports.run = async (client, message, args, player, prefix, opponent1, op
     }
     let logger = new Logger();
     countdown(message, opponent1, opponent2, player, prefix, client, msg, logger);
-  }
-  module.exports.help = {
-    name: "battlesystem",
-    aliases: []
-     }  
+}
+
+module.exports.help = {
+  name: "battlesystem",
+  aliases: []
+}  

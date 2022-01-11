@@ -2,9 +2,9 @@ const Item = require("./Item.js");
 
 class PerfectBlack extends Item {
     constructor(){
-        super("Perfect Black", Infinity);
+        super("PerfectBlack", Infinity);
     }
-    async use(client, message, args, prefix, iindex){
+    async use(client, message, args, prefix, iindex, db){
         let stats = await db.collection("users").findOne({_id: message.author.id});
         message.channel.createMessage("Please provide the index number of the Perfect Phoenix you wish to paint.");
         let awaitpp = await message.channel.awaitMessages(m => m.author.id === message.author.id, {maxMatches: 1, time: 300000});

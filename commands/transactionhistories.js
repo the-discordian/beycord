@@ -25,5 +25,5 @@ module.exports.help = {
     name: "transactionhistories",
     aliases: ["transactionhistory", "th"],
     desc: "Check your trade and payment history.",
-    usage: "transactionhistories - Show all of your recorded transaction histories.\ntransactionhistories upgrade - Buy 10 more extra transaction history slots. They cost <:goldenvaltz:863052675321823233>2.\ntransactionhistory clear - Clear your histories so new ones can get recorded."
+    usage: "transactionhistories - Show all of your recorded transaction histories.\ntransactionhistories upgrade - Buy 10 more extra transaction history slots. They cost <:premiumvaltz:899373241557209158>2.\ntransactionhistory clear - Clear your histories so new ones can get recorded."
 }

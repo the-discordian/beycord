@@ -229,7 +229,7 @@ module.exports.run = async (client, message, args, prefix, player, db) => {
       `Searching for ${nargs[0]}...`
     );
     const beys = [];
-	  client.beys.array().forEach(b => {
+	  Array.from(client.beys.values)().forEach(b => {
 	    if(b !== (client.beys.get("Buddy Bey"))){
 	    let be = new b(); 
 	    if(be.name) beys.push(be.name);

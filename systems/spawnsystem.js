@@ -19,11 +19,11 @@ module.exports.run = async (message, prefix, db, available, client) => {
   .setDescription(`\`\`\`${ok1} + ${ok2}\`\`\``)
   .setColor("#f90b06")
   .setFooter(`Do ${prefix}help claim for a claiming guide.`)
-//  if(client.shadowbeys.includes(prebey.name)) sembed.setColor("#000000");
-//  if(client.legendarybeys.includes(prebey.name)) sembed.setColor("#cb0faf");
-//  if(client.rarebeys.includes(prebey.name)) sembed.setColor("#2a83d5");
-//  if(client.specialbeys.includes(prebey.name)) sembed.setColor("#2a83d6");
-//  if(client.commonbeys.includes(prebey.name)) sembed.setColor("#1bf40b");
+  if(client.shadowbeys.has(prebey.name)) sembed.setColor("#000000");
+  if(client.legendarybeys.has(prebey.name)) sembed.setColor("#cb0faf");
+  if(client.rarebeys.has(prebey.name)) sembed.setColor("#2a83d5");
+  if(client.specialbeys.has(prebey.name)) sembed.setColor("#2a83d6");
+  if(client.commonbeys.has(prebey.name)) sembed.setColor("#1bf40b");
   spawn.bey = selected;
   spawn.type = prebey.type;
   spawn.answer = answer;
